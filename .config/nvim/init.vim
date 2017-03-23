@@ -1,0 +1,103 @@
+" Begin vim-plug
+call plug#begin('~/.local/share/nvim/plugged')
+
+" base16-vim
+Plug 'chriskempson/base16-vim'
+
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" nerdtree
+Plug 'scrooloose/nerdtree'
+
+" Better syntax highlighting for C++
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" easymotion
+Plug 'easymotion/vim-easymotion'
+
+" vim-tmux-navigator
+Plug 'christoomey/vim-tmux-navigator'
+
+" vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" End vim-plug
+call plug#end()
+
+" Set the leader to ,.
+let mapleader = ","
+
+" Load the current base16-vim color scheme.
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace = 256
+
+  " We have silent! here because this will only succeed once the base16-vim
+  " plugin is installed.
+  silent! source ~/.vimrc_background
+endif
+
+" Start nerdtree automatically on startup if no files were specified.
+autocmd StdinReadPre * let s:std_in = 1
+autocmd VimEnter * if exists(':NERDTree') && argc() == 0 && !exists("s:std_in") | NERDTree | wincmd l | endif
+
+" Close neovim automatically if the only window left open is nerdtree.
+autocmd bufenter * if exists(':NERDTree') && (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Show hidden files in nerdtree.
+let NERDTreeShowHidden = 1
+
+" Disable default easymotion bindings.
+let g:EasyMotion_do_mapping = 0
+
+" Use s to jump to any character with easymotion.
+nmap s <Plug>(easymotion-overwin-f)
+
+" Use <Leader>j and <Leader>k to jump to a line with easymotion.
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Clear highlighting with Esc.
+nnoremap <esc> :noh<return><esc>
+
+" Show line numbers.
+set number
+
+" Insert spaces instead of tabs.
+set expandtab
+
+" Use two spaces for indentation.
+set shiftwidth=2
+
+" Show the line and column numbers of the cursor position.
+set ruler
+
+" Disable beeps.
+set noerrorbells
+
+" For opening files with fzf.
+map <C-p> :Files<CR>
+
+" Use the primary clipboard.
+set clipboard=unnamed
+
+" Set the highlight color for trailing whitespace.
+highlight TrailingWhitespace ctermbg=red guibg=red
+
+" Highlight trailing whitespace.
+match TrailingWhitespace '\s\+$\|\n\+\%$'
+
+" Turn on spell checking everywhere.
+set spell spelllang=en_us
+syntax spell toplevel
+autocmd Syntax * :syntax spell toplevel
+
+" The vim-tmux-navigator documentation recommends the following hack
+" to get around a bug in macOS's terminfo for xterm-256color.
+nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
+
+" Set the airline theme.
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
