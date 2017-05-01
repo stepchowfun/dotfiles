@@ -55,20 +55,23 @@ if uname -a | grep -qi 'Ubuntu'; then
   mkdir -p ~/.config/nvim
   cp -r "$DIR/.config/nvim" ~/.config
 
-  echo 'Reloading tmux config...'
-  tmux source-file ~/.tmux.conf || true
-
-  echo 'Setting base16-shell color scheme...'
-  zsh -ic base16_twilight
-
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c qa
 
-  echo 'Patching the vim colorscheme to not set the background color...'
+  echo 'Installing color scheme...'
+  cp "$DIR/base16-circus-scheme/circus/scripts/base16-circus.sh" ~/.config/base16-shell/scripts
+  cp "$DIR/base16-circus-scheme/circus/colors/base16-circus.vim" ~/.local/share/nvim/plugged/base16-vim/colors
+
+  echo 'Patching the vim color scheme to not set the background color...'
   echo 'This allows vim to use the background set by tmux, which is configured'
   echo 'to use a lighter background for panes that are not in focus.'
-  sed -E -i.bak 's/[ \t]*let[ \t]+s:gui00[ \t]*=.*$/let s:gui00 = "none"/' ~/.local/share/nvim/plugged/base16-vim/colors/base16-twilight.vim
-  sed -E -i.bak 's/[ \t]*let[ \t]+s:cterm00[ \t]*=.*$/let s:cterm00 = "none"/' ~/.local/share/nvim/plugged/base16-vim/colors/base16-twilight.vim
+  sed -E -i.bak 's/[ \t]*let[ \t]+s:cterm00[ \t]*=.*$/let s:cterm00 = "none"/' ~/.local/share/nvim/plugged/base16-vim/colors/base16-circus.vim
+
+  echo 'Setting base16-shell color scheme...'
+  zsh -ic base16_circus
+
+  echo 'Reloading tmux config...'
+  tmux source-file ~/.tmux.conf || true
 
   echo 'Installing ripgrep...'
   curl -L -o ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
@@ -131,20 +134,23 @@ if uname -a | grep -qi 'Darwin'; then
   mkdir -p ~/.config/nvim
   cp -r "$DIR/.config/nvim" ~/.config
 
-  echo 'Reloading tmux config...'
-  tmux source-file ~/.tmux.conf || true
-
-  echo 'Setting base16-shell color scheme...'
-  zsh -ic base16_twilight
-
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c qa
 
-  echo 'Patching the vim colorscheme to not set the background color...'
+  echo 'Installing color scheme...'
+  cp "$DIR/base16-circus-scheme/circus/scripts/base16-circus.sh" ~/.config/base16-shell/scripts
+  cp "$DIR/base16-circus-scheme/circus/colors/base16-circus.vim" ~/.local/share/nvim/plugged/base16-vim/colors
+
+  echo 'Patching the vim color scheme to not set the background color...'
   echo 'This allows vim to use the background set by tmux, which is configured'
   echo 'to use a lighter background for panes that are not in focus.'
-  sed -E -i.bak 's/[ \t]*let[ \t]+s:gui00[ \t]*=.*$/let s:gui00 = "none"/' ~/.local/share/nvim/plugged/base16-vim/colors/base16-twilight.vim
-  sed -E -i.bak 's/[ \t]*let[ \t]+s:cterm00[ \t]*=.*$/let s:cterm00 = "none"/' ~/.local/share/nvim/plugged/base16-vim/colors/base16-twilight.vim
+  sed -E -i.bak 's/[ \t]*let[ \t]+s:cterm00[ \t]*=.*$/let s:cterm00 = "none"/' ~/.local/share/nvim/plugged/base16-vim/colors/base16-circus.vim
+
+  echo 'Setting base16-shell color scheme...'
+  zsh -ic base16_circus
+
+  echo 'Reloading tmux config...'
+  tmux source-file ~/.tmux.conf || true
 
   echo 'Installing ripgrep...'
   which rg > /dev/null 2>&1 || brew install ripgrep
