@@ -59,6 +59,17 @@ nmap s <Plug>(easymotion-overwin-f)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+" For opening files with fzf.
+map <C-p> :Files<CR>
+
+" The vim-tmux-navigator documentation recommends the following hack
+" to get around a bug in macOS's terminfo for xterm-256color.
+nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
+
+" Set the airline theme.
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
+
 " Clear highlighting with Esc.
 nnoremap <esc> :noh<return><esc>
 
@@ -75,10 +86,7 @@ set shiftwidth=2
 set ruler
 
 " Disable beeps.
-set noerrorbells
-
-" For opening files with fzf.
-map <C-p> :Files<CR>
+set noerrorbells visualbell t_vb=
 
 " Use the primary clipboard.
 set clipboard=unnamed
@@ -93,11 +101,3 @@ match TrailingWhitespace '\s\+$\|\n\+\%$'
 set spell spelllang=en_us
 syntax spell toplevel
 autocmd Syntax * :syntax spell toplevel
-
-" The vim-tmux-navigator documentation recommends the following hack
-" to get around a bug in macOS's terminfo for xterm-256color.
-nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
-
-" Set the airline theme.
-let g:airline_theme = 'base16'
-let g:airline_powerline_fonts = 1
