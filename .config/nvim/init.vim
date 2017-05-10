@@ -97,6 +97,10 @@ highlight TrailingWhitespace ctermbg=red guibg=red
 " Highlight trailing whitespace.
 match TrailingWhitespace '\s\+$\|\n\+\%$'
 
+" Wrap lines at word boundaries and make the wrapping more obvious.
+set linebreak
+set showbreak=..
+
 " Turn on spell checking everywhere.
 set spell spelllang=en_us
 syntax spell toplevel
