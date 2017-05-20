@@ -105,3 +105,6 @@ set showbreak=..
 set spell spelllang=en_us
 syntax spell toplevel
 autocmd Syntax * :syntax spell toplevel
+
+" Custom file type mappings
+autocmd BufNewFile,BufRead *.hql set syntax=sql
