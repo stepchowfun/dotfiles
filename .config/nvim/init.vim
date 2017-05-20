@@ -108,3 +108,4 @@ autocmd Syntax * :syntax spell toplevel
 
 " Custom file type mappings
 autocmd BufNewFile,BufRead *.hql set syntax=sql
+autocmd BufNewFile,BufRead *.txt set syntax=ruby
