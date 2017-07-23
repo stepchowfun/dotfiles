@@ -6,7 +6,7 @@
 
 ### Automatic
 
-1. Run this: `curl https://www.stephanboyer.com/dotfiles | sh`
+1. Run this: `curl -sSf https://www.stephanboyer.com/dotfiles | sh`
 2. Configure your terminal to use the `13pt Meslo LG S Regular for Powerline` font.
 
 ### Manual
