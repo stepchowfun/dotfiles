@@ -108,7 +108,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 export FZF_DEFAULT_COMMAND='rg --hidden --files -g "!\*.git/\*"'
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
 
 # Local configuration
-[ -f ~/.zshrc-local ] && source ~/.zshrc-local
+[ -f ~/.zshrc-local ] && source ~/.zshrc-local || true
