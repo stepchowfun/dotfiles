@@ -98,8 +98,9 @@ highlight TrailingWhitespace ctermbg=red guibg=red
 match TrailingWhitespace '\s\+$\|\n\+\%$'
 
 " Wrap lines at word boundaries and make the wrapping more obvious.
-set linebreak
 set showbreak=..
+set breakindent
+set breakindentopt=shift:2,sbr
 
 " Turn on spell checking everywhere.
 set spell spelllang=en_us
