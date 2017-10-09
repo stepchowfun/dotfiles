@@ -19,6 +19,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   sudo chsh -s "$(which zsh)" "$(whoami)"
 
   echo 'Installing oh-my-zsh...'
+  rm -rf ~/.oh-my-zsh.old
   mv ~/.oh-my-zsh ~/.oh-my-zsh.old
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
@@ -101,6 +102,7 @@ if uname -a | grep -qi 'Darwin'; then
   sudo chsh -s "$(which zsh)" "$(whoami)"
 
   echo 'Installing oh-my-zsh...'
+  rm -rf ~/.oh-my-zsh.old
   mv ~/.oh-my-zsh ~/.oh-my-zsh.old
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 

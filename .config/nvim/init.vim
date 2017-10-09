@@ -82,6 +82,9 @@ set expandtab
 " Use two spaces for indentation.
 set shiftwidth=2
 
+" Don't auto-indent anything
+set indentexpr=
+
 " Show the line and column numbers of the cursor position.
 set ruler
 
