@@ -4,6 +4,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 " base16-vim
 Plug 'chriskempson/base16-vim'
 
+" deoplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" easymotion
+Plug 'easymotion/vim-easymotion'
+
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -11,18 +17,15 @@ Plug 'junegunn/fzf.vim'
 " nerdtree
 Plug 'scrooloose/nerdtree'
 
-" Better syntax highlighting for C++
-Plug 'octol/vim-cpp-enhanced-highlight'
-
-" easymotion
-Plug 'easymotion/vim-easymotion'
-
-" vim-tmux-navigator
-Plug 'christoomey/vim-tmux-navigator'
-
 " vim-airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Better syntax highlighting for C++
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+" vim-tmux-navigator
+Plug 'christoomey/vim-tmux-navigator'
 
 " End vim-plug
 call plug#end()
