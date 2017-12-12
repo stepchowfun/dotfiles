@@ -116,3 +116,6 @@ autocmd Syntax * :syntax spell toplevel
 " Custom file type mappings
 autocmd BufNewFile,BufRead *.hql set syntax=sql
 autocmd BufNewFile,BufRead *.txt set syntax=ruby
+
+" Delete buffers when they are no longer visible
+autocmd BufNewFile,BufRead * set bufhidden=delete
