@@ -55,6 +55,9 @@ if uname -a | grep -qi 'Ubuntu'; then
   rm -rf ~/.config/nvim
   mkdir -p ~/.config/nvim
   cp -r "$DIR/.config/nvim" ~/.config
+  rm -rf ~/.config/alacritty
+  mkdir -p ~/.config/alacritty
+  cp -r "$DIR/.config/alacritty" ~/.config
 
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c qa
@@ -135,6 +138,9 @@ if uname -a | grep -qi 'Darwin'; then
   rm -rf ~/.config/nvim
   mkdir -p ~/.config/nvim
   cp -r "$DIR/.config/nvim" ~/.config
+  rm -rf ~/.config/alacritty
+  mkdir -p ~/.config/alacritty
+  cp -r "$DIR/.config/alacritty" ~/.config
 
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c qa
