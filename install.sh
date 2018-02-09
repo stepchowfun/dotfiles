@@ -94,10 +94,10 @@ if uname -a | grep -qi 'Darwin'; then
   brew update
 
   echo 'Installing git...'
-  which git > /dev/null 2>&1 || brew install git
+  brew install git
 
   echo 'Installing zsh...'
-  which zsh > /dev/null 2>&1 || brew install zsh zsh-completions
+  brew install zsh zsh-completions
 
   echo 'Setting the login shell to zsh...'
   sudo sh -c "grep -qi \"$(which zsh)\" /etc/shells || echo \"$(which zsh)\" >> /etc/shells"
@@ -115,10 +115,10 @@ if uname -a | grep -qi 'Darwin'; then
   rm -rf fonts
 
   echo 'Installing tmux...'
-  which tmux > /dev/null 2>&1 || brew install tmux reattach-to-user-namespace
+  brew install tmux reattach-to-user-namespace
 
   echo 'Installing neovim...'
-  which nvim > /dev/null 2>&1 || brew install neovim/neovim/neovim
+  brew install neovim/neovim/neovim
 
   echo 'Installing vim-plug...'
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -159,7 +159,7 @@ if uname -a | grep -qi 'Darwin'; then
   tmux source-file ~/.tmux.conf || true
 
   echo 'Installing ripgrep...'
-  which rg > /dev/null 2>&1 || brew install ripgrep
+  brew install ripgrep
 
   echo 'Done.'
   exit
