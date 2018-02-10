@@ -76,6 +76,9 @@ let g:airline_powerline_fonts = 1
 " Clear highlighting with Esc.
 nnoremap <esc> :noh<return><esc>
 
+" Turn on mouse mode
+set mouse=a
+
 " Show line numbers.
 set number
 
