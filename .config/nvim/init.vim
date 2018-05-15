@@ -21,6 +21,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" vim-fugitive
+Plug 'tpope/vim-fugitive'
+
 " Better syntax highlighting for C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 
