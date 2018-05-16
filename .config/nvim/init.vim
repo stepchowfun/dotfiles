@@ -23,6 +23,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " vim-fugitive
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Better syntax highlighting for C++
 Plug 'octol/vim-cpp-enhanced-highlight'
