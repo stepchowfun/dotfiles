@@ -86,15 +86,6 @@ set mouse=a
 " Show line numbers.
 set number
 
-" Insert spaces instead of tabs.
-set expandtab
-
-" Use two spaces for indentation.
-set shiftwidth=2
-
-" Don't auto-indent anything
-set indentexpr=
-
 " Show the line and column numbers of the cursor position.
 set ruler
 
@@ -120,9 +111,22 @@ set spell spelllang=en_us
 syntax spell toplevel
 autocmd Syntax * :syntax spell toplevel
 
+" Indentation options
+function SetIndentationOptions()
+  " Insert spaces instead of tabs.
+  set expandtab
+
+  " Use two spaces for indentation.
+  set shiftwidth=2
+  set softtabstop=2
+endfunction
+
 " Custom file type mappings
 autocmd BufNewFile,BufRead *.hql set syntax=sql
 autocmd BufNewFile,BufRead *.txt set syntax=ruby
 
-" Load any system local configuration
+" Use the same indentation settings regardless of file type.
+autocmd BufNewFile,BufRead * call SetIndentationOptions()
+
+" Load any system local configuration.
 silent! source ~/.vimrc-local
