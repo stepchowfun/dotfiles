@@ -31,6 +31,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " vim-tmux-navigator
 Plug 'christoomey/vim-tmux-navigator'
 
+" vim-gitgutter
+Plug 'airblade/vim-gitgutter'
+
 " End vim-plug
 call plug#end()
 
