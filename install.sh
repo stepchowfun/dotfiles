@@ -46,6 +46,8 @@ if uname -a | grep -qi 'Ubuntu'; then
   (cd $DIR && git submodule update --init)
 
   echo 'Installing dotfiles...'
+  cp  "$DIR/.chunkwmrc" ~/.chunkwmrc
+  cp  "$DIR/.skhdrc" ~/.skhdrc
   cp  "$DIR/.tmux.conf" ~/.tmux.conf
   cp  "$DIR/.zshrc" ~/.zshrc
   rm -rf ~/.config/base16-shell
@@ -130,6 +132,8 @@ if uname -a | grep -qi 'Darwin'; then
   (cd $DIR && git submodule update --init)
 
   echo 'Installing dotfiles...'
+  cp  "$DIR/.chunkwmrc" ~/.chunkwmrc
+  cp  "$DIR/.skhdrc" ~/.skhdrc
   cp  "$DIR/.tmux.conf" ~/.tmux.conf
   cp  "$DIR/.zshrc" ~/.zshrc
   rm -rf ~/.config/base16-shell
