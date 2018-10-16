@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Full path to the plugins directory
+chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
+
+# Configure the desktop mode.
+chunkc set global_desktop_mode           bsp
+chunkc set global_desktop_offset_top     0
+chunkc set global_desktop_offset_bottom  0
+chunkc set global_desktop_offset_left    0
+chunkc set global_desktop_offset_right   0
+chunkc set global_desktop_offset_gap     0
+
+# New windows should appear to the right of the selected window.
+chunkc set bsp_spawn_left                0
+
+# Load the tiling plugin.
+chunkc core::load tiling.so
