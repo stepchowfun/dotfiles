@@ -1,26 +1,26 @@
 # Focusing windows
-cmd - h : chunkc tiling::window --focus west
-cmd - j : chunkc tiling::window --focus south
-cmd - k : chunkc tiling::window --focus north
-cmd - l : chunkc tiling::window --focus east
+shift + cmd - h : chunkc tiling::window --focus west
+shift + cmd - j : chunkc tiling::window --focus south
+shift + cmd - k : chunkc tiling::window --focus north
+shift + cmd - l : chunkc tiling::window --focus east
 
 # Moving windows
-shift + cmd - h : chunkc tiling::window --warp west
-shift + cmd - j : chunkc tiling::window --warp south
-shift + cmd - k : chunkc tiling::window --warp north
-shift + cmd - l : chunkc tiling::window --warp east
+shift + cmd - left : chunkc tiling::window --warp west
+shift + cmd - down : chunkc tiling::window --warp south
+shift + cmd - up : chunkc tiling::window --warp north
+shift + cmd - right : chunkc tiling::window --warp east
 
 # Moving region separators
-alt + cmd - h : \
+shift + ctrl - left : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
-alt + cmd - j : \
+shift + ctrl - down : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge south; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
-alt + cmd - k : \
+shift + ctrl - up : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge north; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
-alt + cmd - l : \
+shift + ctrl - right : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge east; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
 
