@@ -11,21 +11,21 @@ shift + cmd - up : chunkc tiling::window --warp north
 shift + cmd - right : chunkc tiling::window --warp east
 
 # Moving region separators
-shift + ctrl - left : \
+shift + alt - left : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
-shift + ctrl - down : \
+shift + alt - down : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge south; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge north
-shift + ctrl - up : \
+shift + alt - up : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge north; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge south
-shift + ctrl - right : \
+shift + alt - right : \
   chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge east; \
   chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge west
 
 # Equalizing window sizes
-cmd - 0 : chunkc tiling::desktop --equalize
+shift + cmd - 0 : chunkc tiling::desktop --equalize
 
 # Toggling fullscreen
 alt - f : chunkc tiling::window --toggle fullscreen
