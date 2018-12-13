@@ -32,6 +32,9 @@ if uname -a | grep -qi 'Ubuntu'; then
   echo 'Installing tmux...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y tmux
 
+  echo 'Installing Python3 support for neovim...'
+  pip3 install --user neovim
+
   echo 'Installing neovim...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y software-properties-common
   DEBIAN_FRONTEND=noninteractive sudo add-apt-repository -y ppa:neovim-ppa/unstable
@@ -120,6 +123,9 @@ if uname -a | grep -qi 'Darwin'; then
   echo 'Installing tmux...'
   brew ls --versions tmux || brew install tmux
   brew ls --version reattach-to-user-namespace || brew install reattach-to-user-namespace
+
+  echo 'Installing Python3 support for neovim...'
+  pip3 install --user neovim
 
   echo 'Installing neovim...'
   brew ls --versions neovim || brew install neovim
