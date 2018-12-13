@@ -6,6 +6,7 @@ Plug 'chriskempson/base16-vim'
 
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
 
 " easymotion
 Plug 'easymotion/vim-easymotion'
