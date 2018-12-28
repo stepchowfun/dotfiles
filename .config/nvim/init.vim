@@ -64,25 +64,25 @@ let NERDTreeShowHidden = 1
 let g:EasyMotion_do_mapping = 0
 
 " Use s to jump to any character with easymotion.
-nmap s <Plug>(easymotion-overwin-f)
+nmap <silent> s <Plug>(easymotion-overwin-f)
 
 " Use <Leader>j and <Leader>k to jump to a line with easymotion.
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+nmap <silent> <Leader>j <Plug>(easymotion-j)
+nmap <silent> <Leader>k <Plug>(easymotion-k)
 
 " For opening files with fzf.
-map <C-p> :Files<CR>
+nmap <silent> <C-p> :Files<CR>
 
 " The vim-tmux-navigator documentation recommends the following hack
 " to get around a bug in macOS's terminfo for xterm-256color.
-nnoremap <silent> <BS> :TmuxNavigateLeft<CR>
+nmap <silent> <BS> :TmuxNavigateLeft<CR>
 
 " Set the airline theme.
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
 
 " Clear highlighting with Esc.
-nnoremap <esc> :noh<return><esc>
+nmap <silent> <esc> :noh<return>
 
 " Turn on mouse mode
 set mouse=a
@@ -109,6 +109,8 @@ match TrailingWhitespace '\s\+$\|\n\+\%$'
 set showbreak=..
 set breakindent
 set breakindentopt=shift:2,sbr
+nmap <silent> k gk
+nmap <silent> j gj
 
 " Turn on spell checking everywhere.
 set spell spelllang=en_us
