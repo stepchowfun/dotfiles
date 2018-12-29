@@ -13,12 +13,33 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor
 export EDITOR='nvim'
 
-# Don't display user@host in the prompt.
-DEFAULT_USER="$(whoami)"
+# Show whether we are in normal mode or insert mode.
+prompt_mode() {
+  if [ "$KEYMAP" = 'vicmd' ]; then
+    prompt_segment magenta black "\u2714"
+  else
+    prompt_segment green black "\u270e"
+  fi
+}
 
 # Only show the last component of the path.
 prompt_dir() {
   prompt_segment blue black '%1~'
+}
+
+# Override the Agnoster theme's built-in prompt.
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_mode
+  prompt_dir
+
+  # If this is too slow for a given repo, run
+  #   git config oh-my-zsh.hide-status 1
+  # in that repo to disable this segment.
+  prompt_git
+
+  prompt_end
 }
 
 # We use C-d to scroll in tmux and nvim, so turn this option off to prevent
@@ -30,9 +51,14 @@ alias v="nvim"
 
 # vim keybindings
 bindkey -v
+bindkey "^?" backward-delete-char # See https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
 
-# Other keybindings
-bindkey '^w' backward-kill-word
+# Reset the prompt when changing vi editing modes (normal vs. insert mode).
+zle-keymap-select() {
+  zle reset-prompt
+}
+
+zle -N zle-keymap-select
 
 # base16-shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
