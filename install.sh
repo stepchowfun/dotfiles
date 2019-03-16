@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 set -eu -o pipefail
 
 DIR="$(cd "$(dirname "$0")"; pwd)"
@@ -7,16 +7,16 @@ if uname -a | grep -qi 'Ubuntu'; then
   echo 'Ubuntu detected.'
 
   echo 'Updating package lists...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get -y update
+  DEBIAN_FRONTEND=noninteractive sudo apt-get -y update < /dev/tty
 
   echo 'Installing git...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git < /dev/tty
 
   echo 'Installing zsh...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y zsh
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y zsh < /dev/tty
 
   echo 'Setting the login shell to zsh...'
-  sudo chsh -s "$(which zsh)" "$(whoami)"
+  sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
   rm -rf ~/.oh-my-zsh
@@ -30,19 +30,19 @@ if uname -a | grep -qi 'Ubuntu'; then
   rm -rf fonts
 
   echo 'Installing tmux...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y tmux
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y tmux < /dev/tty
 
   echo 'Installing Python3...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y python3-pip
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y python3-pip < /dev/tty
 
   echo 'Installing Python3 support for neovim...'
   pip3 install --user neovim
 
   echo 'Installing neovim...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y software-properties-common
-  DEBIAN_FRONTEND=noninteractive sudo add-apt-repository -y ppa:neovim-ppa/unstable
-  DEBIAN_FRONTEND=noninteractive sudo apt-get update -y
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y neovim
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y software-properties-common < /dev/tty
+  DEBIAN_FRONTEND=noninteractive sudo add-apt-repository -y ppa:neovim-ppa/unstable < /dev/tty
+  DEBIAN_FRONTEND=noninteractive sudo apt-get update -y < /dev/tty
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y neovim < /dev/tty
 
   echo 'Installing vim-plug...'
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -88,7 +88,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   curl -L -o ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
   mkdir ripgrep
   tar -xzf ripgrep.tar.gz -C ripgrep --strip-components=1
-  sudo cp ripgrep/rg /usr/local/bin
+  sudo cp ripgrep/rg /usr/local/bin < /dev/tty
   rm -rf ripgrep ripgrep.tar.gz
 
   echo 'Done.'
@@ -109,8 +109,8 @@ if uname -a | grep -qi 'Darwin'; then
   brew ls --versions zsh-completions || brew install zsh-completions
 
   echo 'Setting the login shell to zsh...'
-  sudo sh -c "grep -qi \"$(which zsh)\" /etc/shells || echo \"$(which zsh)\" >> /etc/shells"
-  sudo chsh -s "$(which zsh)" "$(whoami)"
+  sudo sh -c "grep -qi \"$(which zsh)\" /etc/shells || echo \"$(which zsh)\" >> /etc/shells" < /dev/tty
+  sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
   rm -rf ~/.oh-my-zsh
