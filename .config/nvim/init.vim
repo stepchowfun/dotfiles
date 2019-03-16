@@ -8,9 +8,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 
-" easymotion
-Plug 'easymotion/vim-easymotion'
-
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -26,14 +23,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-" Better syntax highlighting for C++
-Plug 'octol/vim-cpp-enhanced-highlight'
+" vim-gitgutter
+Plug 'airblade/vim-gitgutter'
 
 " vim-tmux-navigator
 Plug 'christoomey/vim-tmux-navigator'
-
-" vim-gitgutter
-Plug 'airblade/vim-gitgutter'
 
 " End vim-plug
 call plug#end()
