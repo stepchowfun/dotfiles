@@ -4,6 +4,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 " base16-vim
 Plug 'chriskempson/base16-vim'
 
+" LanguageClient
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie-wrapper'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+
 " deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
@@ -70,6 +80,10 @@ nmap <silent> <C-p> :Files<CR>
 " The vim-tmux-navigator documentation recommends the following hack
 " to get around a bug in macOS's terminfo for xterm-256color.
 nmap <silent> <BS> :TmuxNavigateLeft<CR>
+
+" LanguageClient shortcuts
+nmap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nmap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Set the airline theme.
 let g:airline_theme = 'base16'
