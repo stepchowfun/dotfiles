@@ -83,7 +83,7 @@ nmap <silent> <BS> :TmuxNavigateLeft<CR>
 
 " LanguageClient shortcuts
 nmap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nmap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nmap <silent> gd :call LanguageClient#textDocument_definition()<CR>zz
 
 " Set the airline theme.
 let g:airline_theme = 'base16'
