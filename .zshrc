@@ -4,9 +4,6 @@ export ZSH=$HOME/.oh-my-zsh
 # The oh-my-zsh theme to load
 ZSH_THEME="agnoster"
 
-# oh-my-zsh plugins to load
-plugins=(git)
-
 # Load oh-my-zsh.
 source $ZSH/oh-my-zsh.sh
 
@@ -46,8 +43,61 @@ build_prompt() {
 # us from accidentally terminating the shell with it.
 setopt ignoreeof
 
-# Aliases
-alias v="nvim"
+# Functions
+function v {
+  nvim "$@"
+}
+
+function gr {
+  update-repo "$(default-branch)"
+  git rebase "$(default-branch)"
+  git status
+}
+
+function ga {
+  git commit --all --amend --no-edit
+  git status
+}
+
+function gap {
+  git commit --all --amend --no-edit
+  git push --force
+  git status
+}
+
+function gfp {
+  git push --force
+}
+
+function replace {
+  rg "$1" --files-with-matches | xargs sed -i '' "s/$1/$2/g"
+}
+
+function die {
+  killall nvim
+  rm -f ~/.local/share/nvim/swap/*
+  tmux kill-server
+}
+
+function dock {
+  docker ps --format='{{.ID}}' | grep > /dev/null "$1" &&
+    docker exec --interactive --tty "$1" /bin/bash ||
+    docker run --rm --interactive --tty "$1" /bin/bash
+}
+
+function dockroot {
+  docker ps --format='{{.ID}}' | grep > /dev/null "$1" &&
+    docker exec --interactive --tty --user root "$1" /bin/bash ||
+    docker run --rm --interactive --tty --user root "$1" /bin/bash
+}
+
+function docker-clean {
+  CONTAINERS="$(docker ps --no-trunc --quiet)"
+  if [ -n "$CONTAINERS" ]; then
+    docker stop $CONTAINERS
+  fi
+  docker system prune --volumes --all --force
+}
 
 # vim keybindings
 bindkey -v
