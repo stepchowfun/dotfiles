@@ -127,6 +127,10 @@ if uname -a | grep -qi 'Darwin'; then
   brew ls --versions tmux || brew install tmux
   brew ls --versions reattach-to-user-namespace || brew install reattach-to-user-namespace
 
+  # TODO: Add an equivalent of this to the Ubuntu version of this installer script.
+  echo 'Installing tmuxinator...'
+  brew ls --versions tmuxinator || brew install tmuxinator
+
   echo 'Installing Python3...'
   brew ls --versions python || brew install python
 
