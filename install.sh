@@ -52,8 +52,6 @@ if uname -a | grep -qi 'Ubuntu'; then
   (cd $DIR && git submodule update --init)
 
   echo 'Installing dotfiles...'
-  cp  "$DIR/.chunkwmrc" ~/.chunkwmrc
-  cp  "$DIR/.skhdrc" ~/.skhdrc
   cp  "$DIR/.tmux.conf" ~/.tmux.conf
   cp  "$DIR/.zshrc" ~/.zshrc
   rm -rf ~/.config/base16-shell
@@ -130,7 +128,7 @@ if uname -a | grep -qi 'Darwin'; then
   brew ls --versions tmux || brew install tmux
   brew ls --versions reattach-to-user-namespace || brew install reattach-to-user-namespace
 
-  # TODO: Add an equivalent of this to the Ubuntu version of this installer script.
+  # NOTE: Only the macOS version of this script installs tmuxinator.
   echo 'Installing tmuxinator...'
   brew ls --versions tmuxinator || brew install tmuxinator
 
@@ -151,8 +149,6 @@ if uname -a | grep -qi 'Darwin'; then
   (cd $DIR && git submodule update --init)
 
   echo 'Installing dotfiles...'
-  cp  "$DIR/.chunkwmrc" ~/.chunkwmrc
-  cp  "$DIR/.skhdrc" ~/.skhdrc
   cp  "$DIR/.tmux.conf" ~/.tmux.conf
   cp  "$DIR/.zshrc" ~/.zshrc
   rm -rf ~/.config/base16-shell
