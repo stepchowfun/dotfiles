@@ -6,7 +6,6 @@
 
 1. Run this: `curl https://www.stephanboyer.com/dotfiles -LSfs | sh`
 2. Configure your terminal to use the `13pt Meslo LG S Regular for Powerline` font.
-3. Optional: Install [chunkwm](https://koekeishiya.github.io/chunkwm/index.html) and [skhd](https://github.com/koekeishiya/skhd).
 
 **NOTE:** The installer script will overwrite existing dotfiles and other configuration. Use at your own risk!
 
