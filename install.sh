@@ -9,7 +9,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   echo 'Updating package lists...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get -y update < /dev/tty
 
-  echo 'Installing git...'
+  echo 'Installing Git...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git < /dev/tty
 
   echo 'Installing zsh...'
@@ -98,10 +98,13 @@ fi
 if uname -a | grep -qi 'Darwin'; then
   echo 'macOS detected.'
 
-  echo 'Updating homebrew...'
+  echo 'Installing Homebrew...'
+  which brew > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  echo 'Updating Homebrew...'
   brew update
 
-  echo 'Installing git...'
+  echo 'Installing Git...'
   brew ls --versions git || brew install git
 
   echo 'Installing zsh...'
