@@ -5,7 +5,9 @@
 ## Installation
 
 1. Run this: `curl https://www.stephanboyer.com/dotfiles -LSfs | sh`
-2. Configure your terminal to use the `13pt Meslo LG S Regular for Powerline` font.
+2. Do one of the following to set up a terminal:
+  - Install [iTerm2](https://www.iterm2.com) and configure it to use the `13pt Meslo LG S Regular for Powerline` font. The installation script does not install iTerm2, but it does install the Meslo font.
+  - Install [Alacritty](https://github.com/jwilm/alacritty) and [Fira Code](https://github.com/tonsky/FiraCode). The installation script does not install either of these, but it does install an Alacritty configuration file.
 
 **NOTE:** The installer script will overwrite existing dotfiles and other configuration. Use at your own risk!
 
