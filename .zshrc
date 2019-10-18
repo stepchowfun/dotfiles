@@ -43,15 +43,32 @@ build_prompt() {
 # us from accidentally terminating the shell with it.
 setopt ignoreeof
 
+# vim keybindings
+bindkey -v
+bindkey "^?" backward-delete-char # See https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
+
+# Reset the prompt when changing vi editing modes (normal vs. insert mode).
+zle-keymap-select() {
+  zle reset-prompt
+}
+
+zle -N zle-keymap-select
+
+# base16-shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '"'!*.git/'"'"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
+
+# Local configuration
+[ -f ~/.zshrc-local ] && source ~/.zshrc-local || true
+
 # Functions
 function v {
   nvim "$@"
-}
-
-function gr {
-  update-repo "$(default-branch)"
-  git rebase "$(default-branch)"
-  git status
 }
 
 function ga {
@@ -98,26 +115,3 @@ function docker-clean {
   fi
   docker system prune --volumes --all --force
 }
-
-# vim keybindings
-bindkey -v
-bindkey "^?" backward-delete-char # See https://superuser.com/questions/476532/how-can-i-make-zshs-vi-mode-behave-more-like-bashs-vi-mode
-
-# Reset the prompt when changing vi editing modes (normal vs. insert mode).
-zle-keymap-select() {
-  zle reset-prompt
-}
-
-zle -N zle-keymap-select
-
-# base16-shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# fzf
-export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '"'!*.git/'"'"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
-
-# Local configuration
-[ -f ~/.zshrc-local ] && source ~/.zshrc-local || true
