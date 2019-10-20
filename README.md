@@ -10,6 +10,8 @@ Run this command:
 curl https://www.stephanboyer.com/dotfiles -LSfs | sh
 ```
 
-Then use [Alacritty](https://github.com/jwilm/alacritty) as your terminal. Other terminals such as Terminal (macOS) and iTerm2 are known to work, but the installer script only installs a configuration for Alacritty.
+Then use [Alacritty](https://github.com/jwilm/alacritty) as your terminal. The installer script downloads Alacritty and configures it to use the [Input Mono](https://input.fontbureau.com) font.
+
+You can use another terminal emulator such as Terminal (macOS) and iTerm2, but you will have to configure it manually.
 
 **NOTE:** The installer script will overwrite existing dotfiles and other configuration. Use at your own risk!
