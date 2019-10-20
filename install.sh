@@ -9,6 +9,10 @@ if uname -a | grep -qi 'Ubuntu'; then
   echo 'Updating package lists...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get -y update < /dev/tty
 
+  echo 'Installing Alacritty...'
+  DEBIAN_FRONTEND=noninteractive add-apt-repository ppa:mmstick76/alacritty
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y alacritty < /dev/tty
+
   echo 'Installing Git...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git < /dev/tty
 
@@ -103,6 +107,9 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Updating Homebrew...'
   brew update
+
+  echo 'Installing Alacritty...'
+  stat /Applications/Alacritty.app > /dev/null || brew cask install alacritty
 
   echo 'Installing Git...'
   brew ls --versions git || brew install git
