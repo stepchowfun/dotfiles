@@ -15,6 +15,7 @@ by re-downloading the fonts at <http://input.fontbureau.com/download>.
 	Alternates
 		--a=ss
 		--asterisk=height
+		--braces=straight
 		--g=ss
 		--i=topserif
 		--l=topserif
