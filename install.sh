@@ -22,12 +22,14 @@ if uname -a | grep -qi 'Ubuntu'; then
   rm -rf ~/.oh-my-zsh
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-  echo 'Installing powerline-fonts...'
-  git clone https://github.com/powerline/fonts.git
-  cd fonts
-  ./install.sh
-  cd ..
-  rm -rf fonts
+  echo 'Installing the `Input` font...'
+  mkdir -p ~/.local/share/fonts
+  cp input-font/Input_Fonts/Input/* ~/.local/share/fonts
+
+  if which fc-cache >/dev/null 2>&1 ; then
+    echo "Resetting font cache..."
+    fc-cache -f ~/.local/share/fonts
+  fi
 
   echo 'Installing tmux...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y tmux < /dev/tty
@@ -117,12 +119,8 @@ if uname -a | grep -qi 'Darwin'; then
   rm -rf ~/.oh-my-zsh
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-  echo 'Installing powerline-fonts...'
-  git clone https://github.com/powerline/fonts.git
-  cd fonts
-  ./install.sh
-  cd ..
-  rm -rf fonts
+  echo 'Installing the `Input` font...'
+  cp input-font/Input_Fonts/Input/* ~/Library/Fonts
 
   echo 'Installing tmux...'
   brew ls --versions tmux || brew install tmux
