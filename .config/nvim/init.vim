@@ -128,12 +128,15 @@ function SetIndentationOptions()
   set softtabstop=2
 endfunction
 
+" Use the same indentation settings regardless of file type.
+autocmd BufNewFile,BufRead * call SetIndentationOptions()
+
+" ...except for Rust source files.
+autocmd BufNewFile,BufRead *.rs set shiftwidth=4 | set softtabstop=4
+
 " Custom file type mappings
 autocmd BufNewFile,BufRead *.hql set syntax=sql
 autocmd BufNewFile,BufRead *.txt set syntax=ruby
-
-" Use the same indentation settings regardless of file type.
-autocmd BufNewFile,BufRead * call SetIndentationOptions()
 
 " Load any system local configuration.
 silent! source ~/.vimrc-local
