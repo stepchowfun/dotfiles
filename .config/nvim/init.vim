@@ -67,16 +67,6 @@ autocmd bufenter * if exists(':NERDTree') && (winnr("$") == 1 && exists("b:NERDT
 " Show hidden files in nerdtree.
 let NERDTreeShowHidden = 1
 
-" Disable default easymotion bindings.
-let g:EasyMotion_do_mapping = 0
-
-" Use s to jump to any character with easymotion.
-nmap <silent> s <Plug>(easymotion-overwin-f)
-
-" Use <Leader>j and <Leader>k to jump to a line with easymotion.
-nmap <silent> <Leader>j <Plug>(easymotion-j)
-nmap <silent> <Leader>k <Plug>(easymotion-k)
-
 " For opening files with fzf.
 nmap <silent> <C-p> :Files<CR>
 
