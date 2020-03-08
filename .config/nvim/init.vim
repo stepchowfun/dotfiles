@@ -11,7 +11,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ }
 
 " kotlin-vim
