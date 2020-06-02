@@ -75,21 +75,6 @@ function v {
   nvim "$@"
 }
 
-function ga {
-  git commit --all --amend --no-edit
-  git status
-}
-
-function gap {
-  git commit --all --amend --no-edit
-  git push --force
-  git status
-}
-
-function gfp {
-  git push --force
-}
-
 function replace {
   rg "$1" --files-with-matches | xargs sed -i '' "s/$1/$2/g"
 }
@@ -119,3 +104,57 @@ function docker-clean {
   fi
   docker system prune --volumes --all --force
 }
+
+function ga {
+  git commit --all --amend --no-edit
+  git status
+}
+
+function gap {
+  git commit --all --amend --no-edit
+  git push --force
+  git status
+}
+
+function gfp {
+  git push --force
+}
+
+function current-branch {
+  git rev-parse --abbrev-ref HEAD 2> /dev/null
+}
+
+function default-branch {
+  echo master
+}
+
+function update-repo {
+  if [ "$(current-branch)" = "$1" ]; then
+    git pull
+  else
+    git fetch origin "$1:$1"
+  fi
+
+  git fetch --prune
+}
+
+function gr {
+  update-repo "$(default-branch)"
+  git rebase "$(default-branch)"
+  git status
+}
+
+function close {
+  BRANCH="$(current-branch)"
+  git checkout "$(default-branch)"
+  git pull
+  git branch -D "$BRANCH"
+}
+
+# Coq
+export PATH="$PATH:/Applications/CoqIDE_8.11.1.app/Contents/Resources/bin"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
