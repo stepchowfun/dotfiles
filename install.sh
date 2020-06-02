@@ -102,7 +102,7 @@ if uname -a | grep -qi 'Darwin'; then
   echo 'macOS detected.'
 
   echo 'Installing Homebrew...'
-  which brew > /dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   echo 'Updating Homebrew...'
   brew update
