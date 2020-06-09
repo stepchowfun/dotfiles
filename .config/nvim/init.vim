@@ -10,9 +10,6 @@ Plug 'chriskempson/base16-vim'
 " - Run `:CocInstall coc-rust-analyzer` after CoC is installed.
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" kotlin-vim
-Plug 'udalov/kotlin-vim'
-
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
