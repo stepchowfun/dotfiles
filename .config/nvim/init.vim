@@ -1,3 +1,43 @@
+"""""""""""""""""""
+" Install plugins "
+"""""""""""""""""""
+
+" Begin vim-plug
+call plug#begin('~/.local/share/nvim/plugged')
+
+  " base16-vim
+  Plug 'chriskempson/base16-vim'
+
+  " CoC
+  " Notes:
+  " - Node.js must be installed.
+  " - Run `:CocInstall coc-rust-analyzer` after CoC is installed.
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+  " fzf
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+
+  " nerdtree
+  Plug 'scrooloose/nerdtree'
+
+  " vim-airline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
+  " vim-fugitive
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+
+  " vim-gitgutter
+  Plug 'airblade/vim-gitgutter'
+
+  " vim-tmux-navigator
+  Plug 'christoomey/vim-tmux-navigator'
+
+" End vim-plug
+call plug#end()
+
 """"""""""""""""""""
 " General settings "
 """"""""""""""""""""
@@ -49,46 +89,6 @@ autocmd BufNewFile,BufRead *.rs set shiftwidth=4 | set softtabstop=4
 
 " Custom file type mappings
 autocmd BufNewFile,BufRead *.txt set syntax=ruby
-
-"""""""""""""""""""
-" Install plugins "
-"""""""""""""""""""
-
-" Begin vim-plug
-call plug#begin('~/.local/share/nvim/plugged')
-
-  " base16-vim
-  Plug 'chriskempson/base16-vim'
-
-  " CoC
-  " Notes:
-  " - Node.js must be installed.
-  " - Run `:CocInstall coc-rust-analyzer` after CoC is installed.
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-  " fzf
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-
-  " nerdtree
-  Plug 'scrooloose/nerdtree'
-
-  " vim-airline
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-
-  " vim-fugitive
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-
-  " vim-gitgutter
-  Plug 'airblade/vim-gitgutter'
-
-  " vim-tmux-navigator
-  Plug 'christoomey/vim-tmux-navigator'
-
-" End vim-plug
-call plug#end()
 
 """"""""""""""""""""""""
 " Plugin configuration "
