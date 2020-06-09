@@ -1,71 +1,9 @@
-" Begin vim-plug
-call plug#begin('~/.local/share/nvim/plugged')
-
-" base16-vim
-Plug 'chriskempson/base16-vim'
-
-" CoC
-" Notes:
-" - Node.js must be installed.
-" - Run `:CocInstall coc-rust-analyzer` after CoC is installed.
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-" fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" nerdtree
-Plug 'scrooloose/nerdtree'
-
-" vim-airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" vim-fugitive
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-
-" vim-gitgutter
-Plug 'airblade/vim-gitgutter'
-
-" vim-tmux-navigator
-Plug 'christoomey/vim-tmux-navigator'
-
-" End vim-plug
-call plug#end()
+""""""""""""""""""""
+" General settings "
+""""""""""""""""""""
 
 " Set the leader to ,.
 let mapleader = ","
-
-" Load the current base16-vim color scheme.
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace = 256
-
-  " We have silent! here because this will only succeed once the base16-vim
-  " plugin is installed.
-  silent! source ~/.vimrc_background
-endif
-
-" Start nerdtree automatically on startup if no files were specified.
-autocmd StdinReadPre * let s:std_in = 1
-autocmd VimEnter * if exists(':NERDTree') && argc() == 0 && !exists("s:std_in") | NERDTree | wincmd l | endif
-
-" Close neovim automatically if the only window left open is nerdtree.
-autocmd bufenter * if exists(':NERDTree') && (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Show hidden files in nerdtree.
-let NERDTreeShowHidden = 1
-
-" For opening files with fzf.
-nmap <silent> <C-p> :Files<CR>
-
-" The vim-tmux-navigator documentation recommends the following hack
-" to get around a bug in macOS's terminfo for xterm-256color.
-nmap <silent> <BS> :TmuxNavigateLeft<CR>
-
-" Set the airline theme.
-let g:airline_theme = 'base16'
-let g:airline_powerline_fonts = 0
 
 " Clear highlighting with Esc.
 nmap <silent> <esc> :noh<return>
@@ -103,33 +41,92 @@ set spell spelllang=en_us
 syntax spell toplevel
 autocmd Syntax * :syntax spell toplevel
 
-" Indentation options
-function SetIndentationOptions()
-  " Insert spaces instead of tabs.
-  set expandtab
-
-  " Use two spaces for indentation.
-  set shiftwidth=2
-  set softtabstop=2
-endfunction
-
 " Use the same indentation settings regardless of file type.
-autocmd BufNewFile,BufRead * call SetIndentationOptions()
+autocmd BufNewFile,BufRead * set expandtab | set shiftwidth=2 | set softtabstop=2
 
 " ...except for Rust source files.
 autocmd BufNewFile,BufRead *.rs set shiftwidth=4 | set softtabstop=4
 
 " Custom file type mappings
-autocmd BufNewFile,BufRead *.hql set syntax=sql
 autocmd BufNewFile,BufRead *.txt set syntax=ruby
 
-" Load any system local configuration.
-silent! source ~/.vimrc-local
+"""""""""""""""""""
+" Install plugins "
+"""""""""""""""""""
 
-" NOTE: All of the configuration from now until the rest of the file comes from
-" CoC's documentation
-" (https://github.com/neoclide/coc.nvim#example-vim-configuration), except I
-" commented out the `set cmdheight=2` line.
+" Begin vim-plug
+call plug#begin('~/.local/share/nvim/plugged')
+
+  " base16-vim
+  Plug 'chriskempson/base16-vim'
+
+  " CoC
+  " Notes:
+  " - Node.js must be installed.
+  " - Run `:CocInstall coc-rust-analyzer` after CoC is installed.
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+  " fzf
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+
+  " nerdtree
+  Plug 'scrooloose/nerdtree'
+
+  " vim-airline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
+  " vim-fugitive
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-rhubarb'
+
+  " vim-gitgutter
+  Plug 'airblade/vim-gitgutter'
+
+  " vim-tmux-navigator
+  Plug 'christoomey/vim-tmux-navigator'
+
+" End vim-plug
+call plug#end()
+
+""""""""""""""""""""""""
+" Plugin configuration "
+""""""""""""""""""""""""
+
+" Load the current base16-vim color scheme.
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace = 256
+
+  " We have silent! here because this will only succeed once the base16-vim
+  " plugin is installed.
+  silent! source ~/.vimrc_background
+endif
+
+" Start nerdtree automatically on startup if no files were specified.
+autocmd StdinReadPre * let s:std_in = 1
+autocmd VimEnter * if exists(':NERDTree') && argc() == 0 && !exists("s:std_in") | NERDTree | wincmd l | endif
+
+" Close neovim automatically if the only window left open is nerdtree.
+autocmd bufenter * if exists(':NERDTree') && (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Show hidden files in nerdtree.
+let NERDTreeShowHidden = 1
+
+" For opening files with fzf.
+nmap <silent> <C-p> :Files<CR>
+
+" The vim-tmux-navigator documentation recommends the following hack
+" to get around a bug in macOS's terminfo for xterm-256color.
+nmap <silent> <BS> :TmuxNavigateLeft<CR>
+
+" Set the airline theme.
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 0
+
+" NOTE: The configuration from now until the end of the section comes from CoC's documentation
+" (https://github.com/neoclide/coc.nvim#example-vim-configuration), except I commented out the
+" `set cmdheight=2` line.
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -271,3 +268,10 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"""""""""""""""""""""""
+" Local configuration "
+"""""""""""""""""""""""
+
+" Load any system local configuration.
+silent! source ~/.vimrc-local
