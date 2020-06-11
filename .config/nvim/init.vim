@@ -35,6 +35,11 @@ call plug#begin('~/.local/share/nvim/plugged')
   " vim-tmux-navigator
   Plug 'christoomey/vim-tmux-navigator'
 
+  " vim-jsx-pretty
+  Plug 'yuezk/vim-js'
+  Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'maxmellon/vim-jsx-pretty'
+
 " End vim-plug
 call plug#end()
 
