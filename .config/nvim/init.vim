@@ -1,59 +1,52 @@
-"""""""""""""""""""
-" Install plugins "
-"""""""""""""""""""
+"""""""""""
+" Plugins "
+"""""""""""
 
-" Begin vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
-
-  " base16-vim
+  " Support for base16 color themes
   Plug 'chriskempson/base16-vim'
 
-  " CoC
+  " Language Server Protocol client
   " Notes:
   " - Node.js must be installed.
   " - Run `:CocInstall coc-rust-analyzer` after CoC is installed.
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-  " fzf
+  " Fuzzy search
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
 
-  " nerdtree
+  " A nice file system explorer
   Plug 'scrooloose/nerdtree'
 
-  " vim-airline
+  " A nice status line
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 
-  " vim-fugitive
+  " Git and GitHub integrations
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
 
-  " vim-gitgutter
+  " Show which lines have changed using Git.
   Plug 'airblade/vim-gitgutter'
 
-  " vim-tmux-navigator
+  " Switch between windows in the same was as switching between tmux panes.
   Plug 'christoomey/vim-tmux-navigator'
 
-  " vim-jsx-pretty
+  " Syntax highlighting for JavaScript, TypeScript, and JSX
   Plug 'yuezk/vim-js'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'maxmellon/vim-jsx-pretty'
-
-" End vim-plug
 call plug#end()
 
 """"""""""""""""""""
 " General settings "
 """"""""""""""""""""
 
-" Set the leader to ,.
-let mapleader = ","
-
 " Clear highlighting with Esc.
 nmap <silent> <esc> :noh<return>
 
-" Turn on mouse mode
+" Turn on mouse mode.
 set mouse=a
 
 " Show line numbers.
@@ -74,7 +67,8 @@ highlight TrailingWhitespace ctermbg=red guibg=red
 " Highlight trailing whitespace.
 match TrailingWhitespace '\s\+$\|\n\+\%$'
 
-" Wrap lines at word boundaries and make the wrapping more obvious.
+" Wrap lines at word boundaries, make the wrapping more obvious, and make
+" cursor movement more intuitive.
 set showbreak=..
 set breakindent
 set breakindentopt=shift:2,sbr
@@ -108,17 +102,17 @@ if filereadable(expand("~/.vimrc_background"))
   silent! source ~/.vimrc_background
 endif
 
-" Start nerdtree automatically on startup if no files were specified.
+" Start NERDTree automatically on startup if no files were specified.
 autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if exists(':NERDTree') && argc() == 0 && !exists("s:std_in") | NERDTree | wincmd l | endif
 
 " Close neovim automatically if the only window left open is nerdtree.
 autocmd bufenter * if exists(':NERDTree') && (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Show hidden files in nerdtree.
+" Show hidden files in NERDTree.
 let NERDTreeShowHidden = 1
 
-" For opening files with fzf.
+" Use C-p to open files with fzf
 nmap <silent> <C-p> :Files<CR>
 
 " The vim-tmux-navigator documentation recommends the following hack
