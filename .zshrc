@@ -135,7 +135,7 @@ function update-repo {
     git fetch origin "$1:$1"
   fi
 
-  git fetch --prune
+  git fetch --prune
 }
 
 function gr {
