@@ -85,7 +85,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   zsh -ic base16_circus
 
   echo 'Reloading tmux config...'
-  tmux source-file ~/.tmux.conf || true
+  tmux source-file ~/.tmux.conf || true # Only succeeds if tmux is running
 
   echo 'Installing ripgrep...'
   curl -L -o ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
@@ -102,23 +102,22 @@ if uname -a | grep -qi 'Darwin'; then
   echo 'macOS detected.'
 
   echo 'Installing Homebrew...'
-  which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-  echo 'Updating Homebrew...'
-  brew update
+  echo 'Upgrading Homebrew packages...'
+  brew upgrade
 
   echo 'Installing Alacritty...'
-  stat /Applications/Alacritty.app > /dev/null || brew cask install alacritty
+  brew install --cask alacritty
 
   echo 'Installing Git...'
-  brew ls --versions git || brew install git
+  brew install git
 
   echo 'Installing zsh...'
-  brew ls --versions zsh || brew install zsh
-  brew ls --versions zsh-completions || brew install zsh-completions
+  brew install zsh
+  brew install zsh-completions
 
   echo 'Setting the login shell to zsh...'
-  sudo sh -c "grep -qi \"$(which zsh)\" /etc/shells || echo \"$(which zsh)\" >> /etc/shells" < /dev/tty
   sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
@@ -129,21 +128,21 @@ if uname -a | grep -qi 'Darwin'; then
   cp input-font/Input_Fonts/Input/* ~/Library/Fonts
 
   echo 'Installing tmux...'
-  brew ls --versions tmux || brew install tmux
-  brew ls --versions reattach-to-user-namespace || brew install reattach-to-user-namespace
+  brew install tmux
+  brew install reattach-to-user-namespace
 
   # NOTE: Only the macOS version of this script installs tmuxinator.
   echo 'Installing tmuxinator...'
-  brew ls --versions tmuxinator || brew install tmuxinator
+  brew install tmuxinator
 
   echo 'Installing Python3...'
-  brew ls --versions python || brew install python
+  brew install python
 
   echo 'Installing Python3 support for neovim...'
   pip3 install --user neovim
 
   echo 'Installing neovim...'
-  brew ls --versions neovim || brew install neovim
+  brew install neovim
 
   echo 'Installing vim-plug...'
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -181,10 +180,10 @@ if uname -a | grep -qi 'Darwin'; then
   zsh -ic base16_circus
 
   echo 'Reloading tmux config...'
-  tmux source-file ~/.tmux.conf || true
+  tmux source-file ~/.tmux.conf || true # Only succeeds if tmux is running
 
   echo 'Installing ripgrep...'
-  brew ls --versions ripgrep || brew install ripgrep
+  brew install ripgrep
 
   echo 'Done.'
   exit
