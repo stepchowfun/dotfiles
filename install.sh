@@ -16,11 +16,11 @@ if uname -a | grep -qi 'Ubuntu'; then
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git < /dev/tty
 
   echo 'Installing ripgrep...'
-  curl -L -o ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
-  mkdir ripgrep
-  tar -xzf ripgrep.tar.gz -C ripgrep --strip-components=1
-  sudo cp ripgrep/rg /usr/local/bin < /dev/tty
-  rm -rf ripgrep ripgrep.tar.gz
+  curl -L -o "$DIR/ripgrep.tar.gz" https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
+  mkdir "$DIR/ripgrep"
+  tar -xzf "$DIR/ripgrep.tar.gz" -C "$DIR/ripgrep" --strip-components=1
+  sudo cp "$DIR/ripgrep/rg" /usr/local/bin < /dev/tty
+  rm -rf "$DIR/ripgrep" "$DIR/ripgrep.tar.gz"
 
   echo 'Installing zsh...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y zsh < /dev/tty
@@ -34,7 +34,7 @@ if uname -a | grep -qi 'Ubuntu'; then
 
   echo 'Installing the `Input` font...'
   mkdir -p ~/.local/share/fonts
-  cp input-font/Input_Fonts/Input/* ~/.local/share/fonts
+  cp "$DIR/input-font/Input_Fonts/Input/"* ~/.local/share/fonts
 
   if which fc-cache >/dev/null 2>&1; then
     echo "Resetting font cache..."
@@ -128,7 +128,7 @@ if uname -a | grep -qi 'Darwin'; then
   git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
   echo 'Installing the `Input` font...'
-  cp input-font/Input_Fonts/Input/* ~/Library/Fonts
+  cp "$DIR/input-font/Input_Fonts/Input/"* ~/Library/Fonts
 
   echo 'Installing tmux...'
   brew install tmux
