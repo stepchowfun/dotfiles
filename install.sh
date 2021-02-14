@@ -40,17 +40,8 @@ if uname -a | grep -qi 'Ubuntu'; then
   echo 'Installing tmux...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y tmux < /dev/tty
 
-  echo 'Installing Python3...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y python3-pip < /dev/tty
-
-  echo 'Installing Python3 support for neovim...'
-  pip3 install --user neovim
-
   echo 'Installing neovim...'
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y software-properties-common < /dev/tty
-  DEBIAN_FRONTEND=noninteractive sudo add-apt-repository -y ppa:neovim-ppa/unstable < /dev/tty
-  DEBIAN_FRONTEND=noninteractive sudo apt-get update -y < /dev/tty
-  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y neovim < /dev/tty
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y neovim python3-neovim < /dev/tty
 
   echo 'Installing vim-plug...'
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
