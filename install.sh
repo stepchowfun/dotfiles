@@ -9,7 +9,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   DEBIAN_FRONTEND=noninteractive sudo apt-get -y update < /dev/tty
 
   echo 'Installing Alacritty...'
-  DEBIAN_FRONTEND=noninteractive add-apt-repository ppa:mmstick76/alacritty
+  DEBIAN_FRONTEND=noninteractive sudo add-apt-repository ppa:mmstick76/alacritty
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y alacritty < /dev/tty
 
   echo 'Installing Git...'
