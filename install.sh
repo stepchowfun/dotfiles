@@ -16,11 +16,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git < /dev/tty
 
   echo 'Installing ripgrep...'
-  curl -L -o "$DIR/ripgrep.tar.gz" https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
-  mkdir "$DIR/ripgrep"
-  tar -xzf "$DIR/ripgrep.tar.gz" -C "$DIR/ripgrep" --strip-components=1
-  sudo cp "$DIR/ripgrep/rg" /usr/local/bin < /dev/tty
-  rm -rf "$DIR/ripgrep" "$DIR/ripgrep.tar.gz"
+  DEBIAN_FRONTEND=noninteractive sudo apt-get install -y ripgrep < /dev/tty
 
   echo 'Installing zsh...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y zsh < /dev/tty
