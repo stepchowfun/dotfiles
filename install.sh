@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-DIR="$(cd "$(dirname "$0")"; pwd)"
+DIR="$(cd "$(dirname "$0")" && pwd)"
 
 if uname -a | grep -qi 'Ubuntu'; then
   echo 'Ubuntu detected.'
@@ -14,6 +14,13 @@ if uname -a | grep -qi 'Ubuntu'; then
 
   echo 'Installing Git...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y git < /dev/tty
+
+  echo 'Installing ripgrep...'
+  curl -L -o ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
+  mkdir ripgrep
+  tar -xzf ripgrep.tar.gz -C ripgrep --strip-components=1
+  sudo cp ripgrep/rg /usr/local/bin < /dev/tty
+  rm -rf ripgrep ripgrep.tar.gz
 
   echo 'Installing zsh...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get install -y zsh < /dev/tty
@@ -29,7 +36,7 @@ if uname -a | grep -qi 'Ubuntu'; then
   mkdir -p ~/.local/share/fonts
   cp input-font/Input_Fonts/Input/* ~/.local/share/fonts
 
-  if which fc-cache >/dev/null 2>&1 ; then
+  if which fc-cache >/dev/null 2>&1; then
     echo "Resetting font cache..."
     fc-cache -f ~/.local/share/fonts
   fi
@@ -54,7 +61,7 @@ if uname -a | grep -qi 'Ubuntu'; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   echo 'Downloading submodules...'
-  (cd $DIR && git submodule update --init)
+  (cd "$DIR" && git submodule update --init)
 
   echo 'Installing dotfiles...'
   cp  "$DIR/.tmux.conf" ~/.tmux.conf
@@ -87,13 +94,6 @@ if uname -a | grep -qi 'Ubuntu'; then
   echo 'Reloading tmux config...'
   tmux source-file ~/.tmux.conf || true # Only succeeds if tmux is running
 
-  echo 'Installing ripgrep...'
-  curl -L -o ripgrep.tar.gz https://github.com/BurntSushi/ripgrep/releases/download/0.5.1/ripgrep-0.5.1-x86_64-unknown-linux-musl.tar.gz
-  mkdir ripgrep
-  tar -xzf ripgrep.tar.gz -C ripgrep --strip-components=1
-  sudo cp ripgrep/rg /usr/local/bin < /dev/tty
-  rm -rf ripgrep ripgrep.tar.gz
-
   echo 'Done.'
   exit
 fi
@@ -112,6 +112,9 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Installing Git...'
   brew install git
+
+  echo 'Installing ripgrep...'
+  brew install ripgrep
 
   echo 'Installing zsh...'
   brew install zsh
@@ -149,7 +152,7 @@ if uname -a | grep -qi 'Darwin'; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   echo 'Downloading submodules...'
-  (cd $DIR && git submodule update --init)
+  (cd "$DIR" && git submodule update --init)
 
   echo 'Installing dotfiles...'
   cp  "$DIR/.tmux.conf" ~/.tmux.conf
@@ -181,9 +184,6 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Reloading tmux config...'
   tmux source-file ~/.tmux.conf || true # Only succeeds if tmux is running
-
-  echo 'Installing ripgrep...'
-  brew install ripgrep
 
   echo 'Done.'
   exit
