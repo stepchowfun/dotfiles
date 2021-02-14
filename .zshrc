@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 
 # Load oh-my-zsh.
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # Preferred editor
 export EDITOR='nvim'
@@ -60,7 +60,7 @@ zle -N zle-keymap-select
 
 # base16-shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '"'!*.git/'"'"
@@ -86,21 +86,25 @@ function die {
 }
 
 function dock {
-  docker ps --format='{{.ID}}' | grep > /dev/null "$1" &&
-    docker exec --interactive --tty "$1" /bin/bash ||
+  if docker ps --format='{{.ID}}' | grep > /dev/null "$1"; then
+    docker exec --interactive --tty "$1" /bin/bash
+  else
     docker run --rm --interactive --tty "$1" /bin/bash
+  fi
 }
 
 function dockroot {
-  docker ps --format='{{.ID}}' | grep > /dev/null "$1" &&
-    docker exec --interactive --tty --user root "$1" /bin/bash ||
+  if docker ps --format='{{.ID}}' | grep > /dev/null "$1"; then
+    docker exec --interactive --tty --user root "$1" /bin/bash
+  else
     docker run --rm --interactive --tty --user root "$1" /bin/bash
+  fi
 }
 
 function docker-clean {
   CONTAINERS="$(docker ps --no-trunc --quiet)"
   if [ -n "$CONTAINERS" ]; then
-    docker stop $CONTAINERS
+    docker stop "$CONTAINERS"
   fi
   docker system prune --volumes --all --force
 }
