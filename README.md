@@ -1,6 +1,6 @@
 # Stephan’s dotfiles
 
-![Screenshot](https://raw.githubusercontent.com/stepchowfun/dotfiles/master/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/stepchowfun/dotfiles/main/screenshot.png)
 
 ## Installation
 

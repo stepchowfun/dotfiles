@@ -131,7 +131,7 @@ function current-branch {
 }
 
 function default-branch {
-  echo master
+  echo main
 }
 
 function update-repo {
