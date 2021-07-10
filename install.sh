@@ -92,10 +92,11 @@ if uname -a | grep -qi 'Darwin'; then
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   echo 'Upgrading Homebrew packages...'
+  brew update
   brew upgrade
 
   echo 'Installing Alacritty...'
-  brew install --cask alacritty
+  brew install alacritty
 
   echo 'Installing Git...'
   brew install git
