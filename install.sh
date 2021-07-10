@@ -25,8 +25,8 @@ if uname -a | grep -qi 'Ubuntu'; then
   sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
-  rm -rf ~/.oh-my-zsh
-  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  rm -r "~/.oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   echo 'Installing the `Input` font...'
   mkdir -p ~/.local/share/fonts
@@ -112,8 +112,8 @@ if uname -a | grep -qi 'Darwin'; then
   sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
-  rm -rf ~/.oh-my-zsh
-  git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+  rm -r "~/.oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   echo 'Installing the `Input` font...'
   cp "$DIR/input-font/Input_Fonts/Input/"* ~/Library/Fonts
