@@ -70,7 +70,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
 
 # Local configuration
-[ -f ~/.zshrc-local ] && source ~/.zshrc-local || true
+if [ -f "$HOME/.zshrc-local" ]; then
+  source "$HOME/.zshrc-local"
+fi
 
 # Functions
 function v {
