@@ -2,8 +2,8 @@
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-if uname -a | grep -qi 'Ubuntu'; then
-  echo 'Ubuntu detected.'
+if uname -a | grep -qi 'Debian\|Ubuntu'; then
+  echo 'Debian or Ubuntu detected.'
 
   echo 'Updating package lists...'
   DEBIAN_FRONTEND=noninteractive sudo apt-get -y update < /dev/tty
