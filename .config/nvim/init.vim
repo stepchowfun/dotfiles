@@ -59,7 +59,7 @@ set ruler
 set noerrorbells visualbell t_vb=
 
 " Use the primary clipboard.
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Set the highlight color for trailing whitespace.
 highlight TrailingWhitespace ctermbg=red guibg=red
