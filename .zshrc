@@ -105,14 +105,6 @@ function dockroot {
   fi
 }
 
-function docker-clean {
-  CONTAINERS="$(docker ps --no-trunc --quiet)"
-  if [ -n "$CONTAINERS" ]; then
-    docker stop "$CONTAINERS"
-  fi
-  docker system prune --volumes --all --force
-}
-
 function ga {
   git commit --all --amend --no-edit
   git status
