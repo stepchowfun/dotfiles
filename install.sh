@@ -25,7 +25,7 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
-  rm -r "~/.oh-my-zsh"
+  rm -rf "~/.oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   echo 'Installing the `Input` font...'
@@ -112,7 +112,7 @@ if uname -a | grep -qi 'Darwin'; then
   sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
 
   echo 'Installing oh-my-zsh...'
-  rm -r "~/.oh-my-zsh"
+  rm -rf "~/.oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   echo 'Installing the `Input` font...'
