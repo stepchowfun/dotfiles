@@ -45,10 +45,6 @@ autocmd BufNewFile,BufRead * set expandtab | set shiftwidth=2 | set softtabstop=
 " ...except for Rust source files.
 autocmd BufNewFile,BufRead *.rs set shiftwidth=4 | set softtabstop=4
 
-" Make text files slightly easier to navigate by applying Ruby syntax
-" highlighting.
-autocmd BufNewFile,BufRead *.txt set syntax=ruby
-
 """""""""""
 " Plugins "
 """""""""""
