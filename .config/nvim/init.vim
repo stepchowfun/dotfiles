@@ -143,7 +143,7 @@ nmap <silent> <BS> :TmuxNavigateLeft<CR>
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
-" Install Rust Analyzer with e.g. `brew install rust-analyzer`
+" Be sure to install Rust Analyzer, e.g. with `brew install rust-analyzer`.
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
     \ }
