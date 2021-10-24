@@ -12,7 +12,7 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   sudo apt-get -y update < /dev/tty
 
   echo 'Installing Alacritty...'
-  sudo add-apt-repository ppa:mmstick76/alacritty
+  sudo add-apt-repository ppa:mmstick76/alacritty < /dev/tty
   sudo apt-get install -y alacritty < /dev/tty
 
   echo 'Installing Git...'
