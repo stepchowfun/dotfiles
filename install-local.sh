@@ -11,6 +11,9 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   echo 'Updating package lists...'
   sudo apt-get -y update < /dev/tty
 
+  echo 'Installing `add-apt-repository`...'
+  sudo apt-get install -y software-properties-common < /dev/tty
+
   echo 'Installing Alacritty...'
   sudo add-apt-repository ppa:mmstick76/alacritty < /dev/tty
   sudo apt-get install -y alacritty < /dev/tty
