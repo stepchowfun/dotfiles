@@ -7,7 +7,7 @@
 Run this command:
 
 ```sh
-curl https://www.stephanboyer.com/dotfiles -LSfs | sh
+curl https://raw.githubusercontent.com/stepchowfun/dotfiles/main/install.sh -LSfs | sh
 ```
 
 Then use [Alacritty](https://github.com/jwilm/alacritty) as your terminal emulator. The installer script downloads Alacritty and configures it to use the [Input Mono](https://input.fontbureau.com) font at size 14.
