@@ -1,4 +1,4 @@
-# Stephan’s dotfiles
+# Stephan's dotfiles
 
 ![Screenshot](https://raw.githubusercontent.com/stepchowfun/dotfiles/main/screenshot.png)
 
