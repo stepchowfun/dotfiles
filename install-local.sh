@@ -166,7 +166,7 @@ if uname -a | grep -qi 'Darwin'; then
   cp -r ".config/alacritty" ~/.config
 
   echo 'Installing vim plugins...'
-  nvim -c PlugInstall -c qa
+  nvim -c PlugInstall -c PlugUpdate -c qa
 
   echo 'Installing color scheme...'
   cp "base16-circus-scheme/circus/scripts/base16-circus.sh" \
