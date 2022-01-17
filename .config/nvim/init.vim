@@ -1,50 +1,3 @@
-""""""""""""""""""""
-" General settings "
-""""""""""""""""""""
-
-" Clear highlighting with Esc.
-nmap <silent> <esc> :noh<return>
-
-" Turn on mouse mode.
-set mouse=a
-
-" Show line numbers.
-set number
-
-" Show the line and column numbers of the cursor position.
-set ruler
-
-" Disable beeps.
-set noerrorbells visualbell t_vb=
-
-" Use the primary clipboard.
-set clipboard=unnamedplus
-
-" Set the highlight color for trailing whitespace.
-highlight TrailingWhitespace ctermbg=red guibg=red
-
-" Highlight trailing whitespace.
-match TrailingWhitespace '\s\+$\|\n\+\%$'
-
-" Wrap lines at word boundaries, make the wrapping more obvious, and make
-" cursor movement more intuitive.
-set showbreak=..
-set breakindent
-set breakindentopt=shift:2,sbr
-nmap <silent> k gk
-nmap <silent> j gj
-
-" Turn on spell checking everywhere.
-set spell spelllang=en_us
-syntax spell toplevel
-autocmd Syntax * :syntax spell toplevel
-
-" Use the same indentation settings regardless of file type.
-autocmd BufNewFile,BufRead * set expandtab | set shiftwidth=2 | set softtabstop=2
-
-" ...except for Rust source files.
-autocmd BufNewFile,BufRead *.rs set shiftwidth=4 | set softtabstop=4
-
 """""""""""
 " Plugins "
 """""""""""
@@ -92,6 +45,7 @@ call plug#begin('~/.local/share/nvim/plugged')
       \ 'branch': 'next',
       \ 'do': 'bash install.sh',
       \ }
+
 call plug#end()
 
 """"""""""""""""""""""""
@@ -150,6 +104,53 @@ let g:LanguageClient_serverCommands = {
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+""""""""""""""""""""
+" General settings "
+""""""""""""""""""""
+
+" Clear highlighting with Esc.
+nmap <silent> <esc> :noh<return>
+
+" Turn on mouse mode.
+set mouse=a
+
+" Show line numbers.
+set number
+
+" Show the line and column numbers of the cursor position.
+set ruler
+
+" Disable beeps.
+set noerrorbells visualbell t_vb=
+
+" Use the primary clipboard.
+set clipboard=unnamedplus
+
+" Set the highlight color for trailing whitespace.
+highlight TrailingWhitespace ctermbg=red guibg=red
+
+" Highlight trailing whitespace.
+match TrailingWhitespace '\s\+$\|\n\+\%$'
+
+" Wrap lines at word boundaries, make the wrapping more obvious, and make
+" cursor movement more intuitive.
+set showbreak=..
+set breakindent
+set breakindentopt=shift:2,sbr
+nmap <silent> k gk
+nmap <silent> j gj
+
+" Turn on spell checking everywhere.
+set spell spelllang=en_us
+syntax spell toplevel
+autocmd Syntax * syntax spell toplevel | hi clear SpellBad | hi SpellBad cterm=underline | hi clear SpellCap | hi SpellCap cterm=underline
+
+" Use the same indentation settings regardless of file type.
+autocmd BufNewFile,BufRead * set expandtab | set shiftwidth=2 | set softtabstop=2
+
+" ...except for Rust source files.
+autocmd BufNewFile,BufRead *.rs set shiftwidth=4 | set softtabstop=4
 
 """""""""""""""""""""""
 " Local configuration "
