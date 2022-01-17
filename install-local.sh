@@ -72,12 +72,6 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c PlugUpdate -c qa
 
-  echo 'Installing color scheme...'
-  cp "base16-circus-scheme/circus/scripts/base16-circus.sh" \
-    ~/.config/base16-shell/scripts
-  cp "base16-circus-scheme/circus/colors/base16-circus.vim" \
-    ~/.local/share/nvim/plugged/base16-vim/colors
-
   echo 'Patching the vim color scheme to not set the background color...'
   echo 'This allows vim to use the background set by tmux, which is configured'
   echo 'to use a lighter background for panes that are not in focus.'
@@ -167,12 +161,6 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c PlugUpdate -c qa
-
-  echo 'Installing color scheme...'
-  cp "base16-circus-scheme/circus/scripts/base16-circus.sh" \
-    ~/.config/base16-shell/scripts
-  cp "base16-circus-scheme/circus/colors/base16-circus.vim" \
-    ~/.local/share/nvim/plugged/base16-vim/colors
 
   echo 'Patching the vim color scheme to not set the background color...'
   echo 'This allows vim to use the background set by tmux, which is configured'
