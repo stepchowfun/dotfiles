@@ -144,7 +144,7 @@ nmap <silent> j gj
 " Turn on spell checking everywhere.
 set spell spelllang=en_us
 syntax spell toplevel
-autocmd Syntax * syntax spell toplevel | hi clear SpellBad | hi SpellBad cterm=underline | hi clear SpellCap | hi SpellCap cterm=underline
+autocmd Syntax * syntax spell toplevel | hi clear SpellBad | hi SpellBad cterm=underline | hi clear SpellCap | hi SpellCap cterm=underline | hi clear SpellLocal | hi SpellLocal cterm=underline
 
 " Use the same indentation settings regardless of file type.
 autocmd BufNewFile,BufRead * set expandtab | set shiftwidth=2 | set softtabstop=2
