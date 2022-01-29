@@ -152,7 +152,7 @@ function close {
 }
 
 # Coq
-export PATH="$PATH:/Applications/Coq-Platform-8.15\~beta1.app/Contents/Resources/bin"
+export PATH="$PATH:/Applications/Coq-Platform-8.15~beta1.app/Contents/Resources/bin"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
