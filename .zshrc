@@ -80,7 +80,11 @@ function v {
 }
 
 function replace {
-  rg "$1" --files-with-matches | xargs sed -i '' "s/$1/$2/g"
+  # Linux version:
+  #   rg --null --files-with-matches "$1" | xargs --null -I % sed --regexp-extended --in-place "s/$1/$2/g" %
+
+  # macOS version:
+  rg --null --files-with-matches "$1" | xargs -0 -I % sed -E -I '' "s/$1/$2/g" %
 }
 
 function die {
