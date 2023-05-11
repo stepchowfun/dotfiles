@@ -37,15 +37,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Syntax highlighting for JSX
   Plug 'maxmellon/vim-jsx-pretty'
-
-  " Language Server Protocol client
-  " Run this to set it up for Rust:
-  "   rustup component add rls rust-analysis rust-src
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
 call plug#end()
 
 """"""""""""""""""""""""
@@ -91,19 +82,6 @@ let g:airline_powerline_fonts = 0
 " The vim-tmux-navigator documentation recommends the following hack
 " to get around a bug in macOS's terminfo for xterm-256color.
 nmap <silent> <BS> :TmuxNavigateLeft<CR>
-
-" PLUGIN: LanguageClient-neovim
-
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-" Be sure to install Rust Analyzer, e.g. with `brew install rust-analyzer`.
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rust-analyzer'],
-    \ }
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 """"""""""""""""""""
 " General settings "
