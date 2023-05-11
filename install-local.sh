@@ -32,7 +32,7 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
 
   echo 'Installing oh-my-zsh...'
   rm -rf ~/.oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
   echo 'Installing the `Input` font...'
   mkdir -p ~/.local/share/fonts
@@ -118,7 +118,7 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Installing oh-my-zsh...'
   rm -rf ~/.oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
   echo 'Installing the `Input` font...'
   cp "input-font/Input_Fonts/Input/"* ~/Library/Fonts
