@@ -94,6 +94,7 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Installing Homebrew...'
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
   echo 'Upgrading Homebrew packages...'
   brew update
