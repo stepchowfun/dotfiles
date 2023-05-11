@@ -1,0 +1,50 @@
+image: ubuntu:20.04
+default: install
+user: user
+command_prefix: |
+  # Make Bash not silently ignore errors.
+  set -euo pipefail
+tasks:
+  create_user:
+    description: Create a user who doesn't have root privileges.
+    user: root
+    command: |
+      # Install sudo.
+      apt-get -y update
+      apt-get install -y sudo
+
+      # Create a user named `user` with a home directory.
+      adduser --disabled-password --gecos '' user
+
+      # Make the user a passwordless sudoer.
+      echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+  install:
+    description: Run the installation script.
+    dependencies:
+      - create_user
+    input_paths:
+      - .
+    command: |
+      # Force the installation script to assume an Ubuntu environment.
+      uname() {
+        echo 'Ubuntu'
+      }
+      export -f uname
+
+      # The script tries to use Zsh to set the color scheme but doing so
+      # results in a "inappropriate ioctl for device" error. So mock it.
+      zsh() {
+        echo 'Not running Zsh.'
+      }
+      export -f zsh
+
+      # The script tries to hook up the STDIN of sudo to the TTY, but there is
+      # no TTY.
+      sudo ln -sf /dev/null /dev/tty
+
+      # Avoid running into Git's `safe.directory` restriction.
+      sudo chown --recursive user .
+
+      # Run the script.
+      ./install-local.sh

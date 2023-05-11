@@ -15,8 +15,20 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   sudo apt-get install -y software-properties-common < /dev/tty
 
   echo 'Installing Alacritty...'
-  sudo add-apt-repository ppa:mmstick76/alacritty < /dev/tty
-  sudo apt-get install -y alacritty < /dev/tty
+  sudo apt-get install -y \
+    cargo \
+    cmake \
+    pkg-config \
+    libfreetype6-dev \
+    libfontconfig1-dev \
+    libxcb-xfixes0-dev \
+    libxkbcommon-dev \
+    python3 \
+    < /dev/tty
+  cargo install alacritty
+
+  echo 'Installing cURL...'
+  sudo apt-get install -y curl < /dev/tty
 
   echo 'Installing Git...'
   sudo apt-get install -y git < /dev/tty
@@ -102,6 +114,9 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Installing Alacritty...'
   brew install alacritty
+
+  echo 'Installing cURL...'
+  brew install curl
 
   echo 'Installing Git...'
   brew install git
