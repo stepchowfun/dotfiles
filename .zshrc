@@ -155,6 +155,9 @@ function close {
   git branch -D "$BRANCH"
 }
 
+# Homebrew
+! test -f /opt/homebrew/bin/brew || eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Coq
 export PATH="$PATH:/Applications/Coq-Platform-8.15~beta1.app/Contents/Resources/bin"
 
