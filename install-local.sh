@@ -59,7 +59,7 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   sudo apt-get install -y tmux < /dev/tty
 
   echo 'Installing neovim...'
-  sudo apt-get install -y neovim python3-neovim < /dev/tty
+  sudo apt-get install -y neovim < /dev/tty
 
   echo 'Installing vim-plug...'
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -145,12 +145,6 @@ if uname -a | grep -qi 'Darwin'; then
   # NOTE: Only the macOS version of this script installs tmuxinator.
   echo 'Installing tmuxinator...'
   brew install tmuxinator
-
-  echo 'Installing Python3...'
-  brew install python
-
-  echo 'Installing Python3 support for neovim...'
-  pip3 install --user neovim
 
   echo 'Installing neovim...'
   brew install neovim

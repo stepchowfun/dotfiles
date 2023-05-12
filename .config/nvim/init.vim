@@ -26,7 +26,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   " Show which lines have changed using Git.
   Plug 'airblade/vim-gitgutter'
 
-  " Switch between windows in the same was as switching between tmux panes.
+  " Switch between windows in the same way as switching between tmux panes.
   Plug 'christoomey/vim-tmux-navigator'
 
   " Syntax highlighting for JavaScript
