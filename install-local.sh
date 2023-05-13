@@ -46,9 +46,9 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   rm -rf ~/.oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-  echo 'Installing the `Input` font...'
+  echo 'Installing the `SF Mono Powerline` font...'
   mkdir -p ~/.local/share/fonts
-  cp "input-font/Input_Fonts/Input/"* ~/.local/share/fonts
+  cp SF-Mono-Powerline/*.otf ~/.local/share/fonts
 
   if which fc-cache >/dev/null 2>&1; then
     echo "Resetting font cache..."
@@ -135,8 +135,8 @@ if uname -a | grep -qi 'Darwin'; then
   rm -rf ~/.oh-my-zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-  echo 'Installing the `Input` font...'
-  cp "input-font/Input_Fonts/Input/"* ~/Library/Fonts
+  echo 'Installing the `SF Mono Powerline` font...'
+  cp SF-Mono-Powerline/*.otf ~/Library/Fonts
 
   echo 'Installing tmux...'
   brew install tmux
