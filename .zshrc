@@ -10,10 +10,6 @@ source "$ZSH/oh-my-zsh.sh"
 # Preferred editor
 export EDITOR='nvim'
 
-# Disable the fancy Powerline segment separator since it doesn't render nicely
-# in some fonts.
-SEGMENT_SEPARATOR=''
-
 # Show whether we are in normal mode or insert mode.
 prompt_mode() {
   if [ "$KEYMAP" = 'vicmd' ]; then
