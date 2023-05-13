@@ -131,7 +131,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Input
+    family: SF Mono Powerline
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -142,7 +142,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Input
+    family: SF Mono Powerline
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -153,7 +153,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Input
+    family: SF Mono Powerline
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -164,13 +164,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Input
+    family: SF Mono Powerline
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 15.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
