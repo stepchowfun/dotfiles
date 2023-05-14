@@ -28,15 +28,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
   " Switch between windows in the same way as switching between tmux panes.
   Plug 'christoomey/vim-tmux-navigator'
-
-  " Syntax highlighting for JavaScript
-  Plug 'yuezk/vim-js'
-
-  " Syntax highlighting for TypeScript
-  Plug 'HerringtonDarkholme/yats.vim'
-
-  " Syntax highlighting for JSX
-  Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 """"""""""""""""""""""""
