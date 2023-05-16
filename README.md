@@ -11,3 +11,7 @@ sh -c "$(curl https://raw.githubusercontent.com/stepchowfun/dotfiles/main/instal
 ```
 
 **NOTE:** The installer script will overwrite existing dotfiles and other configuration. Use at your own risk!
+
+## Notes
+
+- The [Alacritty](https://alacritty.org/) terminal emulator is configured to use the [Berkeley Mono](https://berkeleygraphics.com/typefaces/berkeley-mono/) typeface, but this font must be licensed and so cannot be automatically installed. You must either purchase the font or change the font family.
