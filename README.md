@@ -1,5 +1,9 @@
 # My dotfiles
 
+[![Build status](https://github.com/stepchowfun/dotfiles/workflows/Continuous%20integration/badge.svg?branch=main)](https://github.com/stepchowfun/dotfiles/actions?query=branch%3Amain)
+
+This repository contains various configuration files I use for my shell, text editor, terminal emulator, etc.
+
 ![Screenshot](https://raw.githubusercontent.com/stepchowfun/dotfiles/main/screenshot.png)
 
 ## Installation
