@@ -77,7 +77,7 @@ function v {
 
 function replace {
   # Linux version:
-  #   rg --null --files-with-matches "$1" | xargs --null -I % sed --regexp-extended --in-place "s/$1/$2/g" %
+  #   rg ... | xargs --null -I % sed --regexp-extended --in-place "s/$1/$2/g" %
 
   # macOS version:
   rg --null --hidden --glob '!.git/' --files-with-matches "$1" | xargs -0 -I % sed -E -I '' "s/$1/$2/g" %
