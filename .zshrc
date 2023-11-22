@@ -76,11 +76,23 @@ function v {
 }
 
 function replace {
+  SEPARATOR=''
+  for CANDIDATE in '`' '~' '!' '@' '#' '$' '%' '^' '&' '*' '(' ')' '-' '_' '=' '+'; do
+    if ! echo "$1" | rg --fixed-strings --quiet "$CANDIDATE"; then
+      SEPARATOR="$CANDIDATE"
+      break
+    fi
+  done
+  if test -z "$SEPARATOR"; then
+    echo 'Unable to find separator for sed.' 1>&2
+    return 1
+  fi
+
   # Linux version:
-  #   rg ... | xargs --null -I % sed --regexp-extended --in-place "s/$1/$2/g" %
+  #   rg ... | xargs --null -I % sed --regexp-extended --in-place "s${SEPARATOR}${1}${SEPARATOR}${2}${SEPARATOR}g" %
 
   # macOS version:
-  rg --null --hidden --glob '!.git/' --files-with-matches "$1" | xargs -0 -I % sed -E -I '' "s/$1/$2/g" %
+  rg --null --hidden --glob '!.git/' --files-with-matches "$1" | xargs -0 -I % sed -E -I '' "s${SEPARATOR}${1}${SEPARATOR}${2}${SEPARATOR}g" %
 }
 
 function die {
