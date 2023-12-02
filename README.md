@@ -11,7 +11,7 @@ This repository contains various configuration files I use for my shell, text ed
 Run this command:
 
 ```sh
-sh -c "$(curl https://raw.githubusercontent.com/stepchowfun/dotfiles/main/install.sh -LSfs)"
+curl https://raw.githubusercontent.com/stepchowfun/dotfiles/main/install.sh -LSfs | sh
 ```
 
 **NOTE:** The installer script will overwrite existing dotfiles and other configuration. Use at your own risk!
