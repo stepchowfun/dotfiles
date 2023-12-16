@@ -37,12 +37,10 @@ call plug#end()
 " PLUGIN: Base16 Vim
 
 " Load the current base16-vim color scheme.
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace = 256
-
-  " We have silent! here because this will only succeed once the base16-vim
-  " plugin is installed.
-  silent! source ~/.vimrc_background
+if exists('$BASE16_THEME')
+      \ && (!exists('g:colors_name') || g:colors_name != 'base16-$BASE16_THEME')
+    let base16colorspace=256
+    colorscheme base16-$BASE16_THEME
 endif
 
 " PLUGIN: NERDTree
