@@ -167,7 +167,7 @@ function close {
 ! test -f /opt/homebrew/bin/brew || eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Coq
-export PATH="$PATH:/Applications/Coq-Platform~8.16~2022.09.app/Contents/Resources/bin"
+export PATH="$PATH:/Applications/Coq-Platform~8.17~2023.08.app/Contents/Resources/bin"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
