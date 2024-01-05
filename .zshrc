@@ -65,11 +65,6 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '"'!*.git/'"'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
 
-# Local configuration
-if [ -f "$HOME/.zshrc-local" ]; then
-  source "$HOME/.zshrc-local"
-fi
-
 # Functions
 function v {
   nvim "$@"
@@ -163,6 +158,10 @@ function close {
   git branch -D "$BRANCH"
 }
 
+function rg {
+  $(which -a rg | grep '^/' | tail -n 1) --hidden --glob '!.git' "$@"
+}
+
 # Homebrew
 ! test -f /opt/homebrew/bin/brew || eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -173,3 +172,8 @@ export PATH="$PATH:/Applications/Coq-Platform~8.17~2023.08.app/Contents/Resource
 export NVM_DIR="$HOME/.nvm"
 ! [ -s "$NVM_DIR/nvm.sh" ] || \. "$NVM_DIR/nvm.sh"  # This loads nvm
 ! [ -s "$NVM_DIR/bash_completion" ] || \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Local configuration
+if [ -f "$HOME/.zshrc-local" ]; then
+  source "$HOME/.zshrc-local"
+fi
