@@ -9,5 +9,6 @@
   "editor.minimap.enabled": false,
   "[rust]": {
     "editor.tabSize": 4
-  }
+  },
+  "outline.collapseItems": "alwaysCollapse"
 }
