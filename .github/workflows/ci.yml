@@ -22,5 +22,5 @@ jobs:
       with:
         tasks: install
         docker_repo: stephanmisc/toast
-        read_remote_cache: ${{ github.event_name == 'push' }}
+        read_remote_cache: true
         write_remote_cache: ${{ github.event_name == 'push' }}
