@@ -14,9 +14,19 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   echo 'Installing `add-apt-repository`...'
   sudo apt-get install -y software-properties-common < /dev/tty
 
+  echo 'Installing cURL...'
+  sudo apt-get install -y curl < /dev/tty
+
+  echo 'Installing Git...'
+  sudo apt-get install -y git < /dev/tty
+
+  echo 'Installing ripgrep...'
+  sudo apt-get install -y ripgrep < /dev/tty
+
   echo 'Installing Alacritty...'
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  source "$HOME/.cargo/env"
   sudo apt-get install -y \
-    cargo \
     cmake \
     pkg-config \
     libfreetype6-dev \
@@ -26,15 +36,6 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
     python3 \
     < /dev/tty
   cargo install alacritty
-
-  echo 'Installing cURL...'
-  sudo apt-get install -y curl < /dev/tty
-
-  echo 'Installing Git...'
-  sudo apt-get install -y git < /dev/tty
-
-  echo 'Installing ripgrep...'
-  sudo apt-get install -y ripgrep < /dev/tty
 
   echo 'Installing zsh...'
   sudo apt-get install -y zsh < /dev/tty
@@ -105,9 +106,6 @@ if uname -a | grep -qi 'Darwin'; then
   brew update
   brew upgrade
 
-  echo 'Installing Alacritty...'
-  brew install alacritty
-
   echo 'Installing cURL...'
   brew install curl
 
@@ -116,6 +114,9 @@ if uname -a | grep -qi 'Darwin'; then
 
   echo 'Installing ripgrep...'
   brew install ripgrep
+
+  echo 'Installing Alacritty...'
+  brew install alacritty
 
   echo 'Installing zsh...'
   brew install zsh
