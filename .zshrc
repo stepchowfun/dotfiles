@@ -151,6 +151,16 @@ function gr {
   git status
 }
 
+function gra {
+  update-repo "$(default-branch)"
+  git for-each-ref --format='%(refname:short)' refs/heads | while read line; do
+    git checkout "$line"
+    git rebase "$(default-branch)"
+  done
+  git checkout "$(default-branch)"
+  git status
+}
+
 function close {
   BRANCH="$(current-branch)"
   git checkout "$(default-branch)"
