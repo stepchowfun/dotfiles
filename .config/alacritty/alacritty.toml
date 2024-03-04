@@ -1,0 +1,31 @@
+[font]
+size = 15.0
+
+[font.bold]
+family = "Berkeley Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Berkeley Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Berkeley Mono"
+style = "Italic"
+
+[font.normal]
+family = "Berkeley Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001E"
+key = "Key6"
+mods = "Control"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+dynamic_padding = true
+option_as_alt = "Both"
+resize_increments = true
