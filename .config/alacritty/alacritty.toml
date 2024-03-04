@@ -17,8 +17,10 @@ style = "Italic"
 family = "Berkeley Mono"
 style = "Regular"
 
+# Make Ctrl+6 (toggle between the current file and the alternate file in Vim) work.
+# See https://github.com/alacritty/alacritty/issues/1108.
 [[keyboard.bindings]]
-chars = "\u001E"
+chars = "\u001e"
 key = "Key6"
 mods = "Control"
 
