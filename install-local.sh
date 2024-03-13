@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Make Bash not silently ignore errors.
-set -euo pipefail
+# Make Bash log commands and not silently ignore errors.
+set -euxo pipefail
 
 # Check for Debian/Ubuntu.
 if uname -a | grep -qi 'Debian\|Ubuntu'; then
