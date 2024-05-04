@@ -1,4 +1,4 @@
-image: ubuntu:22.04
+image: ubuntu:24.04
 default: install
 user: user
 command_prefix: |
@@ -13,8 +13,8 @@ tasks:
       apt-get -y update
       apt-get install -y sudo
 
-      # Create a user named `user` with a home directory.
-      adduser --disabled-password --gecos '' user
+      # Create a user named `user` with a home directory and with Bash as the login shell.
+      useradd user --create-home --shell /bin/bash
 
       # Make the user a passwordless sudoer.
       echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
