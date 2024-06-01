@@ -1,7 +1,7 @@
 {
   "vim.useSystemClipboard": true,
   "telemetry.telemetryLevel": "off",
-  "editor.fontFamily": "Berkeley Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "Berkeley Mono, Menlo, Monaco, Courier New, monospace",
   "editor.fontSize": 15,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
