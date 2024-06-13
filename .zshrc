@@ -175,8 +175,8 @@ function rg {
 # Homebrew
 ! test -f /opt/homebrew/bin/brew || eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Coq
-export PATH="$PATH:/Applications/Coq-Platform~8.18~2023.11.app/Contents/Resources/bin"
+# Binaries installed via OPAM (such as Coq)
+export PATH="$PATH:$HOME/.opam/default/bin"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"

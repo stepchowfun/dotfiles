@@ -10,5 +10,6 @@
   "[rust]": {
     "editor.tabSize": 4
   },
-  "outline.collapseItems": "alwaysCollapse"
+  "outline.collapseItems": "alwaysCollapse",
+  "vscoq.path": "/Users/stephanboyer/.opam/default/bin/vscoqtop"
 }
