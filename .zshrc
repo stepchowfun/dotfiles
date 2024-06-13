@@ -175,8 +175,8 @@ function rg {
 # Homebrew
 ! test -f /opt/homebrew/bin/brew || eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Binaries installed via OPAM (such as Coq)
-export PATH="$PATH:$HOME/.opam/default/bin"
+# OPAM
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
