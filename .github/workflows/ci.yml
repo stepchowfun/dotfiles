@@ -9,7 +9,7 @@ defaults:
     shell: bash
 jobs:
   ci-linux:
-    name: Build for Linux
+    name: Validate
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
