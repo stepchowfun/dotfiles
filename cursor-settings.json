@@ -1,0 +1,15 @@
+{
+    "window.commandCenter": true,
+    "workbench.colorTheme": "Default Dark Modern",
+    "vim.useSystemClipboard": true,
+    "editor.fontFamily": "Berkeley Mono, Menlo, Monaco, Courier New, monospace",
+    "editor.fontSize": 15,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.rulers": [79],
+    "editor.minimap.enabled": false,
+    "[rust]": {
+      "editor.tabSize": 4
+    },
+    "outline.collapseItems": "alwaysCollapse"
+}
