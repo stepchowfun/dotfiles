@@ -61,8 +61,9 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   git submodule update --init
 
   echo 'Installing dotfiles...'
-  mkdir -p ~/.config/Code/User
-  cp  "vscode-settings.json" ~/.config/Code/User/settings.json
+  mkdir -p ~/.config/Cursor/User
+  cp  "cursor-keybindings.json" ~/.config/Cursor/User/keybindings.json
+  cp  "cursor-settings.json" ~/.config/Cursor/User/settings.json
   cp  ".tmux.conf" ~/.tmux.conf
   cp  ".zshrc" ~/.zshrc
   rm -rf ~/.config/base16-shell
@@ -148,8 +149,10 @@ if uname -a | grep -qi 'Darwin'; then
   git submodule update --init
 
   echo 'Installing dotfiles...'
-  mkdir -p ~/Library/Application\ Support/Code/User
-  cp  "vscode-settings.json" ~/Library/Application\ Support/Code/User/settings.json
+
+  mkdir -p ~/Library/Application\ Support/Cursor/User
+  cp "cursor-keybindings.json" ~/Library/Application\ Support/Cursor/User/keybindings.json
+  cp "cursor-settings.json" ~/Library/Application\ Support/Cursor/User/settings.json
   cp  ".tmux.conf" ~/.tmux.conf
   cp  ".zshrc" ~/.zshrc
   rm -rf ~/.config/base16-shell

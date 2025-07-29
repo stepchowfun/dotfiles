@@ -1,0 +1,67 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "cmd+i",
+        "command": "composerMode.agent"
+    },
+    {
+        "key": "cmd+right",
+        "command": "extension.coq.interpretToPoint",
+        "when": "config.vscoq.proof.mode == '0' && resourceScheme == 'coq-view'"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "-extension.coq.interpretToPoint",
+        "when": "config.vscoq.proof.mode == '0' && resourceScheme == 'coq-view'"
+    },
+    {
+        "key": "cmd+right",
+        "command": "extension.coq.interpretToPoint",
+        "when": "editorTextFocus && config.vscoq.proof.mode == '0' && editorLangId == 'coq'"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "-extension.coq.interpretToPoint",
+        "when": "editorTextFocus && config.vscoq.proof.mode == '0' && editorLangId == 'coq'"
+    },
+    {
+        "key": "cmd+down",
+        "command": "extension.coq.stepForward",
+        "when": "editorTextFocus && editorLangId == 'coq'"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "-extension.coq.stepForward",
+        "when": "editorTextFocus && editorLangId == 'coq'"
+    },
+    {
+        "key": "cmd+down",
+        "command": "extension.coq.stepForward",
+        "when": "resourceScheme == 'coq-view'"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "-extension.coq.stepForward",
+        "when": "resourceScheme == 'coq-view'"
+    },
+    {
+        "key": "cmd+up",
+        "command": "extension.coq.stepBackward",
+        "when": "resourceScheme == 'coq-view'"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "-extension.coq.stepBackward",
+        "when": "resourceScheme == 'coq-view'"
+    },
+    {
+        "key": "cmd+up",
+        "command": "extension.coq.stepBackward",
+        "when": "editorTextFocus && editorLangId == 'coq'"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "-extension.coq.stepBackward",
+        "when": "editorTextFocus && editorLangId == 'coq'"
+    }
+]
