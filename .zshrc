@@ -87,7 +87,7 @@ function replace {
   #   rg ... | xargs --null -I % sed --regexp-extended --in-place "s${SEPARATOR}${1}${SEPARATOR}${2}${SEPARATOR}g" %
 
   # macOS version:
-  rg --null --hidden --glob '!.git/' --files-with-matches "$1" | xargs -0 -I % sed -E -I '' "s${SEPARATOR}${1}${SEPARATOR}${2}${SEPARATOR}g" %
+  rg --null --hidden --glob '!.git/' --files-with-matches -- "$1" | xargs -0 -I % sed -E -I '' "s${SEPARATOR}${1}${SEPARATOR}${2}${SEPARATOR}g" %
 }
 
 function die {
