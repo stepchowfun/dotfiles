@@ -19,6 +19,32 @@ tasks:
       # Make the user a passwordless sudoer.
       echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+  install_tagref:
+    description: Install Tagref, a reference checking tool.
+    dependencies:
+      - create_user
+    user: root
+    command: |
+      # Install Curl, used for installing Tagref.
+      apt-get -y update
+      apt-get install -y curl
+
+      # Install Tagref using the official installer script.
+      curl https://raw.githubusercontent.com/stepchowfun/tagref/main/install.sh -LSfs | sh
+
+  lint:
+    description: Run the linters.
+    dependencies:
+      - install_tagref
+    input_paths:
+      - .
+    excluded_input_paths:
+      - .git
+    command: |
+      # Check references with Tagref.
+      tagref
+      tagref list-unused --fail-if-any
+
   install:
     description: Run the installation script.
     dependencies:
