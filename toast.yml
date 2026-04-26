@@ -1,4 +1,4 @@
-image: ubuntu:24.04
+image: ubuntu:26.04
 default: install
 user: user
 command_prefix: |
@@ -65,12 +65,9 @@ tasks:
       }
       export -f zsh
 
-      # The script tries to hook up the STDIN of sudo to the TTY, but there is
-      # no TTY.
-      sudo ln -sf /dev/null /dev/tty
-
       # Avoid running into Git's `safe.directory` restriction.
       sudo chown --recursive user .
 
-      # Run the script.
-      ./install-local.sh
+      # Run the script inside a pseudo-terminal so its `/dev/tty` redirections
+      # keep working on newer Ubuntu images.
+      script --quiet --return --command ./install-local.sh /dev/null
