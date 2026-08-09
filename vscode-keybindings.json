@@ -1,0 +1,67 @@
+// Place your key bindings in this file to override the defaults.
+[
+    {
+        "key": "cmd+i",
+        "command": "workbench.action.chat.openagent"
+    },
+    {
+        "key": "cmd+right",
+        "command": "extension.rocq.interpretToPoint",
+        "when": "config.vsrocq.proof.mode == 0 && resourceScheme == 'rocq-view'"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "-extension.rocq.interpretToPoint",
+        "when": "config.vsrocq.proof.mode == 0 && resourceScheme == 'rocq-view'"
+    },
+    {
+        "key": "cmd+right",
+        "command": "extension.rocq.interpretToPoint",
+        "when": "editorTextFocus && config.vsrocq.proof.mode == 0 && editorLangId == 'rocq'"
+    },
+    {
+        "key": "ctrl+alt+right",
+        "command": "-extension.rocq.interpretToPoint",
+        "when": "editorTextFocus && config.vsrocq.proof.mode == 0 && editorLangId == 'rocq'"
+    },
+    {
+        "key": "cmd+down",
+        "command": "extension.rocq.stepForward",
+        "when": "editorTextFocus && editorLangId == 'rocq'"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "-extension.rocq.stepForward",
+        "when": "editorTextFocus && editorLangId == 'rocq'"
+    },
+    {
+        "key": "cmd+down",
+        "command": "extension.rocq.stepForward",
+        "when": "resourceScheme == 'rocq-view'"
+    },
+    {
+        "key": "ctrl+alt+down",
+        "command": "-extension.rocq.stepForward",
+        "when": "resourceScheme == 'rocq-view'"
+    },
+    {
+        "key": "cmd+up",
+        "command": "extension.rocq.stepBackward",
+        "when": "resourceScheme == 'rocq-view'"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "-extension.rocq.stepBackward",
+        "when": "resourceScheme == 'rocq-view'"
+    },
+    {
+        "key": "cmd+up",
+        "command": "extension.rocq.stepBackward",
+        "when": "editorTextFocus && editorLangId == 'rocq'"
+    },
+    {
+        "key": "ctrl+alt+up",
+        "command": "-extension.rocq.stepBackward",
+        "when": "editorTextFocus && editorLangId == 'rocq'"
+    }
+]
