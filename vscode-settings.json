@@ -1,15 +1,14 @@
 {
-    "window.commandCenter": true,
-    "workbench.colorTheme": "Default Dark Modern",
-    "vim.useSystemClipboard": true,
+    "chat.disableAIFeatures": true,
+    "editor.detectIndentation": false,
     "editor.fontFamily": "Berkeley Mono, Menlo, Monaco, Courier New, monospace",
     "editor.fontSize": 15,
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "editor.rulers": [79],
     "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "outline.collapseItems": "alwaysCollapse",
+    "vim.useSystemClipboard": true,
+    "workbench.colorTheme": "Default Dark Modern",
     "[rust]": {
       "editor.tabSize": 4
-    },
-    "outline.collapseItems": "alwaysCollapse"
+    }
 }
