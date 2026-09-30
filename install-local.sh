@@ -3,25 +3,33 @@
 # Make Bash log commands and not silently ignore errors.
 set -euxo pipefail
 
+# Install the VS Code configuration into the given user data directory (e.g., that of VS Code or
+# Cursor).
+install_vscode_config() {
+  mkdir -p "$1/User"
+  cp 'vscode-keybindings.json' "$1/User/keybindings.json"
+  cp 'vscode-settings.json' "$1/User/settings.json"
+}
+
 # Check for Debian/Ubuntu.
 if uname -a | grep -qi 'Debian\|Ubuntu'; then
   echo 'Debian or Ubuntu detected.'
   export DEBIAN_FRONTEND=noninteractive
 
   echo 'Updating package lists...'
-  sudo apt-get -y update < /dev/tty
+  sudo apt-get -y update < '/dev/tty'
 
   echo 'Installing `add-apt-repository`...'
-  sudo apt-get install -y software-properties-common < /dev/tty
+  sudo apt-get install -y software-properties-common < '/dev/tty'
 
   echo 'Installing cURL...'
-  sudo apt-get install -y curl < /dev/tty
+  sudo apt-get install -y curl < '/dev/tty'
 
   echo 'Installing Git...'
-  sudo apt-get install -y git < /dev/tty
+  sudo apt-get install -y git < '/dev/tty'
 
   echo 'Installing ripgrep...'
-  sudo apt-get install -y ripgrep < /dev/tty
+  sudo apt-get install -y ripgrep < '/dev/tty'
 
   echo 'Installing Alacritty...'
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -34,47 +42,50 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
     libxcb-xfixes0-dev \
     libxkbcommon-dev \
     python3 \
-    < /dev/tty
+    < '/dev/tty'
   cargo install alacritty
 
   echo 'Installing zsh...'
-  sudo apt-get install -y zsh < /dev/tty
+  sudo apt-get install -y zsh < '/dev/tty'
 
   echo 'Setting the login shell to zsh...'
-  sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
+  sudo chsh -s "$(which zsh)" "$(whoami)" < '/dev/tty'
 
   echo 'Installing oh-my-zsh...'
-  rm -rf ~/.oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  rm -rf "$HOME/.oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" '' --unattended
 
   echo 'Installing tmux...'
-  sudo apt-get install -y tmux < /dev/tty
+  sudo apt-get install -y tmux < '/dev/tty'
 
   echo 'Installing neovim...'
-  sudo apt-get install -y neovim < /dev/tty
+  sudo apt-get install -y neovim < '/dev/tty'
 
   echo 'Installing vim-plug...'
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   echo 'Downloading submodules...'
   git submodule update --init
 
   echo 'Installing dotfiles...'
-  mkdir -p ~/.config/Code/User
-  cp  "vscode-keybindings.json" ~/.config/Code/User/keybindings.json
-  cp  "vscode-settings.json" ~/.config/Code/User/settings.json
-  cp  ".tmux.conf" ~/.tmux.conf
-  cp  ".zshrc" ~/.zshrc
-  rm -rf ~/.config/base16-shell
-  mkdir -p ~/.config/base16-shell
-  cp -r ".config/base16-shell" ~/.config
-  rm -rf ~/.config/nvim
-  mkdir -p ~/.config/nvim
-  cp -r ".config/nvim" ~/.config
-  rm -rf ~/.config/alacritty
-  mkdir -p ~/.config/alacritty
-  cp -r ".config/alacritty" ~/.config
+  if command -v code > '/dev/null' || [ -d "$HOME/.config/Code" ]; then
+    install_vscode_config "$HOME/.config/Code"
+  fi
+  if command -v cursor > '/dev/null' || [ -d "$HOME/.config/Cursor" ]; then
+    install_vscode_config "$HOME/.config/Cursor"
+  fi
+  cp  '.tmux.conf' "$HOME/.tmux.conf"
+  cp  '.zshrc' "$HOME/.zshrc"
+  rm -rf "$HOME/.config/base16-shell"
+  mkdir -p "$HOME/.config/base16-shell"
+  cp -r '.config/base16-shell' "$HOME/.config"
+  rm -rf "$HOME/.config/nvim"
+  mkdir -p "$HOME/.config/nvim"
+  cp -r '.config/nvim' "$HOME/.config"
+  rm -rf "$HOME/.config/alacritty"
+  mkdir -p "$HOME/.config/alacritty"
+  cp -r '.config/alacritty' "$HOME/.config"
 
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c PlugUpdate -c qa
@@ -83,13 +94,13 @@ if uname -a | grep -qi 'Debian\|Ubuntu'; then
   echo 'This allows vim to use the background set by tmux, which is configured'
   echo 'to use a lighter background for panes that are not in focus.'
   sed -E -i.bak 's/[ \t]*let[ \t]+s:cterm00[ \t]*=.*$/let s:cterm00 = "none"/' \
-    ~/.local/share/nvim/plugged/base16-vim/colors/base16-circus.vim
+    "$HOME/.local/share/nvim/plugged/base16-vim/colors/base16-circus.vim"
 
   echo 'Setting base16-shell color scheme...'
   zsh -ic base16_circus
 
   echo 'Reloading tmux config...'
-  tmux source-file ~/.tmux.conf || true # Only succeeds if tmux is running
+  tmux source-file "$HOME/.tmux.conf" || true # Only succeeds if tmux is running
 
   echo 'Done.'
   exit
@@ -100,8 +111,8 @@ if uname -a | grep -qi 'Darwin'; then
   echo 'macOS detected.'
 
   echo 'Installing Homebrew...'
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/tty
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  '/bin/bash' -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < '/dev/tty'
+  eval "$('/opt/homebrew/bin/brew' shellenv)"
 
   echo 'Upgrading Homebrew packages...'
   brew update
@@ -124,11 +135,11 @@ if uname -a | grep -qi 'Darwin'; then
   brew install zsh-completions
 
   echo 'Setting the login shell to zsh...'
-  sudo chsh -s "$(which zsh)" "$(whoami)" < /dev/tty
+  sudo chsh -s "$(which zsh)" "$(whoami)" < '/dev/tty'
 
   echo 'Installing oh-my-zsh...'
-  rm -rf ~/.oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  rm -rf "$HOME/.oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" '' --unattended
 
   echo 'Installing tmux...'
   brew install tmux
@@ -142,28 +153,31 @@ if uname -a | grep -qi 'Darwin'; then
   brew install neovim
 
   echo 'Installing vim-plug...'
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   echo 'Downloading submodules...'
   git submodule update --init
 
   echo 'Installing dotfiles...'
-
-  mkdir -p ~/Library/Application\ Support/Code/User
-  cp "vscode-keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
-  cp "vscode-settings.json" ~/Library/Application\ Support/Code/User/settings.json
-  cp  ".tmux.conf" ~/.tmux.conf
-  cp  ".zshrc" ~/.zshrc
-  rm -rf ~/.config/base16-shell
-  mkdir -p ~/.config/base16-shell
-  cp -r ".config/base16-shell" ~/.config
-  rm -rf ~/.config/nvim
-  mkdir -p ~/.config/nvim
-  cp -r ".config/nvim" ~/.config
-  rm -rf ~/.config/alacritty
-  mkdir -p ~/.config/alacritty
-  cp -r ".config/alacritty" ~/.config
+  if [ -d '/Applications/Visual Studio Code.app' ] || \
+    [ -d "$HOME/Library/Application Support/Code" ]; then
+    install_vscode_config "$HOME/Library/Application Support/Code"
+  fi
+  if [ -d '/Applications/Cursor.app' ] || [ -d "$HOME/Library/Application Support/Cursor" ]; then
+    install_vscode_config "$HOME/Library/Application Support/Cursor"
+  fi
+  cp  '.tmux.conf' "$HOME/.tmux.conf"
+  cp  '.zshrc' "$HOME/.zshrc"
+  rm -rf "$HOME/.config/base16-shell"
+  mkdir -p "$HOME/.config/base16-shell"
+  cp -r '.config/base16-shell' "$HOME/.config"
+  rm -rf "$HOME/.config/nvim"
+  mkdir -p "$HOME/.config/nvim"
+  cp -r '.config/nvim' "$HOME/.config"
+  rm -rf "$HOME/.config/alacritty"
+  mkdir -p "$HOME/.config/alacritty"
+  cp -r '.config/alacritty' "$HOME/.config"
 
   echo 'Installing vim plugins...'
   nvim -c PlugInstall -c PlugUpdate -c qa
@@ -172,13 +186,13 @@ if uname -a | grep -qi 'Darwin'; then
   echo 'This allows vim to use the background set by tmux, which is configured'
   echo 'to use a lighter background for panes that are not in focus.'
   sed -E -i.bak 's/[ \t]*let[ \t]+s:cterm00[ \t]*=.*$/let s:cterm00 = "none"/' \
-    ~/.local/share/nvim/plugged/base16-vim/colors/base16-circus.vim
+    "$HOME/.local/share/nvim/plugged/base16-vim/colors/base16-circus.vim"
 
   echo 'Setting base16-shell color scheme...'
   zsh -ic base16_circus
 
   echo 'Reloading tmux config...'
-  tmux source-file ~/.tmux.conf || true # Only succeeds if tmux is running
+  tmux source-file "$HOME/.tmux.conf" || true # Only succeeds if tmux is running
 
   echo 'Done.'
   exit
