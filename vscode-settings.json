@@ -1,10 +1,12 @@
 {
     "chat.disableAIFeatures": true,
+    "editor.cursorSurroundingLines": 15,
     "editor.detectIndentation": false,
     "editor.fontFamily": "Berkeley Mono, Menlo, Monaco, Courier New, monospace",
     "editor.fontSize": 15,
     "editor.minimap.enabled": false,
     "editor.tabSize": 2,
+    "explorer.sortOrder": "type",
     "outline.collapseItems": "alwaysCollapse",
     "vim.useSystemClipboard": true,
     "workbench.colorTheme": "Default Dark Modern",
