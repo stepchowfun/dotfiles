@@ -1,6 +1,5 @@
 {
     "chat.disableAIFeatures": true,
-    "editor.cursorSurroundingLines": 15,
     "editor.detectIndentation": false,
     "editor.fontFamily": "Berkeley Mono, Menlo, Monaco, Courier New, monospace",
     "editor.fontSize": 15,
