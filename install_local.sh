@@ -7,8 +7,8 @@ set -euxo pipefail
 # Cursor).
 install_vscode_config() {
   mkdir -p "$1/User"
-  cp 'vscode-keybindings.json' "$1/User/keybindings.json"
-  cp 'vscode-settings.json' "$1/User/settings.json"
+  cp 'vscode_keybindings.json' "$1/User/keybindings.json"
+  cp 'vscode_settings.json' "$1/User/settings.json"
 }
 
 # Check for Debian/Ubuntu.

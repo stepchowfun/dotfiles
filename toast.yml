@@ -70,4 +70,4 @@ tasks:
 
       # Run the script inside a pseudo-terminal so its `/dev/tty` redirections
       # keep working on newer Ubuntu images.
-      script --quiet --return --command ./install-local.sh /dev/null
+      script --quiet --return --command ./install_local.sh /dev/null
