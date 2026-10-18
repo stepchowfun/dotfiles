@@ -7,6 +7,6 @@
   rm -rf /tmp/dotfiles && \
   git clone https://github.com/stepchowfun/dotfiles.git /tmp/dotfiles && \
   cd /tmp/dotfiles && \
-  ./install-local.sh && \
+  ./install_local.sh && \
   rm -rf /tmp/dotfiles
 )
